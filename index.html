@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Stéphane Chrétien — recherche, publications et enseignement en statistique et apprentissage automatique.">
+  <meta name="theme-color" content="#f8f8f5">
+  <title>Stéphane Chrétien · Statistics & Machine Learning</title>
+  <style>
+    :root {
+      --ink: #15293c;
+      --muted: #526172;
+      --accent: #166f7b;
+      --line: #dce4e7;
+      --paper: #f8f8f5;
+      --white: #fff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink);
+           font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a:hover { color: #0b4d56; }
+    .container { width: min(1060px, calc(100% - 48px)); margin: auto; }
+    header { border-bottom: 1px solid var(--line); background: rgba(248,248,245,.95); }
+    .header-inner { min-height: 78px; display: flex; align-items: center; justify-content: space-between;
+                    gap: 1rem; flex-wrap: wrap; }
+    .brand { color: var(--ink); text-decoration: none; font-weight: 700; letter-spacing: -.03em; font-size: 1.15rem; }
+    nav { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.3rem; }
+    nav a { font-size: .91rem; text-decoration: none; color: var(--muted); }
+    nav a:hover { color: var(--accent); }
+    .lang-button { border: 1px solid var(--line); border-radius: 8px; padding: .3rem .55rem;
+                   background: white; color: var(--ink); cursor: pointer; font: inherit; font-size: .86rem; }
+    .hero { padding: 104px 0 86px; display: grid; grid-template-columns: 1.65fr .8fr; gap: 64px; align-items: center; }
+    .eyebrow { color: var(--accent); font-weight: 750; text-transform: uppercase; font-size: .78rem;
+               letter-spacing: .18em; margin: 0 0 15px; }
+    h1 { font-family: Georgia, "Times New Roman", serif; font-weight: 500; font-size: clamp(2.8rem, 6vw, 5.3rem);
+         line-height: 1.09; letter-spacing: -.045em; margin: 0 0 24px; }
+    .hero p.lead { font-size: 1.16rem; line-height: 1.8; max-width: 650px; color: var(--muted); }
+    .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 33px; }
+    .btn { display: inline-flex; padding: 11px 20px; border-radius: 8px; text-decoration: none;
+           background: var(--ink); color: white; font-weight: 650; }
+    .btn:hover { color: white; background: #234964; }
+    .btn.secondary { color: var(--ink); background: transparent; border: 1px solid #b9c8d0; }
+    .btn.secondary:hover { background: white; color: var(--ink); }
+    .hero-side { border-top: 3px solid var(--accent); background: white; padding: 28px;
+                 box-shadow: 0 12px 28px rgba(17, 45, 62, .045); }
+    .hero-side p { margin: .2rem 0 1.15rem; }
+    .hero-side strong { display: block; font-size: .84rem; letter-spacing: .03em; }
+    .small { color: var(--muted); font-size: .92rem; }
+    section { scroll-margin-top: 22px; border-top: 1px solid var(--line); padding: 64px 0; }
+    .section-heading { display: grid; grid-template-columns: 200px 1fr; gap: 35px; }
+    h2 { font: 500 2.2rem/1.2 Georgia, serif; letter-spacing: -.025em; margin: 0; }
+    h3 { font-size: 1.05rem; letter-spacing: -.01em; margin: 0 0 10px; }
+    .section-content > p:first-child { margin-top: 0; }
+    .cards { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 22px; }
+    .card { border: 1px solid var(--line); background: white; border-radius: 10px; padding: 22px; }
+    .card p { margin: 0; color: var(--muted); font-size: .94rem; }
+    .links { display: flex; flex-wrap: wrap; gap: 12px 23px; margin-top: 20px; }
+    .note { font-size: .88rem; color: var(--muted); }
+    footer { border-top: 1px solid var(--line); padding: 30px 0 44px; font-size: .88rem; color: var(--muted); }
+    footer .container { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    [lang="en"] { display: none; }
+    body.english [lang="fr"] { display: none; }
+    body.english [lang="en"] { display: revert; }
+    @media (max-width: 760px) {
+      .hero { padding: 62px 0; grid-template-columns: 1fr; gap: 28px; }
+      .section-heading { grid-template-columns: 1fr; gap: 18px; }
+      .cards { grid-template-columns: 1fr; }
+      .header-inner { padding: 16px 0; }
+      nav { gap: .5rem 1rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <a class="brand" href="#top">Stéphane Chrétien</a>
+      <nav aria-label="Navigation principale">
+        <a href="#about"><span lang="fr">Présentation</span><span lang="en">About</span></a>
+        <a href="#research"><span lang="fr">Recherche</span><span lang="en">Research</span></a>
+        <a href="#publications">Publications</a>
+        <a href="#teaching"><span lang="fr">Enseignement</span><span lang="en">Teaching</span></a>
+        <a href="#contact">Contact</a>
+        <button class="lang-button" id="langToggle" aria-label="Switch website language" type="button">EN</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <div class="hero">
+      <div>
+        <p class="eyebrow">Statistics · Machine Learning · Mathematics</p>
+        <h1>Stéphane<br>Chrétien</h1>
+        <p class="lead" lang="fr">
+          Professeur à l'Université Lumière Lyon 2. Mes travaux portent sur les fondements
+          mathématiques de l'apprentissage automatique, la statistique et l'optimisation.
+        </p>
+        <p class="lead" lang="en">
+          Professor at Université Lumière Lyon 2. My work focuses on the mathematical
+          foundations of machine learning, statistics, and optimization.
+        </p>
+        <div class="cta">
+          <a class="btn" href="#research"><span lang="fr">Découvrir mes recherches</span><span lang="en">Explore my research</span></a>
+          <a class="btn secondary" href="https://github.com/sgchretien" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </div>
+      </div>
+      <aside class="hero-side">
+        <strong><span lang="fr">Affiliation</span><span lang="en">Affiliation</span></strong>
+        <p>Université Lumière Lyon 2<br>Laboratoire ERIC (UR 3083)</p>
+        <strong><span lang="fr">Domaines</span><span lang="en">Fields</span></strong>
+        <p class="small">Statistical learning · Optimization · Uncertainty quantification</p>
+        <strong>GitHub</strong>
+        <a href="https://github.com/sgchretien">@sgchretien</a>
+      </aside>
+    </div>
+
+    <section id="about" class="section-heading">
+      <h2><span lang="fr">Présentation</span><span lang="en">About</span></h2>
+      <div class="section-content">
+        <p lang="fr">Je m'intéresse aux interactions entre probabilités, géométrie,
+          optimisation et théorie de l'apprentissage, ainsi qu'à leurs applications
+          en sciences des données.</p>
+        <p lang="en">My research explores the interplay between probability,
+          geometry, optimization, and learning theory, as well as applications
+          in data science.</p>
+      </div>
+    </section>
+
+    <section id="research" class="section-heading">
+      <h2><span lang="fr">Recherche</span><span lang="en">Research</span></h2>
+      <div class="section-content">
+        <p lang="fr">Quelques thèmes de recherche représentatifs :</p>
+        <p lang="en">Selected research themes:</p>
+        <div class="cards">
+          <article class="card"><h3>Conformal prediction & UQ</h3>
+            <p lang="fr">Quantification d'incertitude et garanties statistiques.</p>
+            <p lang="en">Uncertainty quantification and statistical guarantees.</p></article>
+          <article class="card"><h3>Online learning & RL</h3>
+            <p lang="fr">Apprentissage séquentiel et prise de décision.</p>
+            <p lang="en">Sequential learning and decision-making.</p></article>
+          <article class="card"><h3>Optimization</h3>
+            <p lang="fr">Optimisation stochastique et méthodes mathématiques pour le machine learning.</p>
+            <p lang="en">Stochastic optimization and mathematical methods for machine learning.</p></article>
+          <article class="card"><h3>Geometry & optimal transport</h3>
+            <p lang="fr">Distances entre distributions, structures géométriques et données complexes.</p>
+            <p lang="en">Distances between distributions, geometric structure, and complex data.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications" class="section-heading">
+      <h2>Publications</h2>
+      <div class="section-content">
+        <p lang="fr">Retrouvez mes travaux dans les archives et bases bibliographiques.
+          Une liste de publications sélectionnées pourra être ajoutée ici.</p>
+        <p lang="en">Explore my work in the following research archives and indexes.
+          A curated list of publications can be added here.</p>
+        <div class="links">
+          <a href="https://arxiv.org/search/?query=Stephane+Chretien&searchtype=all" target="_blank" rel="noopener noreferrer">arXiv ↗</a>
+          <a href="https://hal.science/search/index/?q=St%C3%A9phane%20Chr%C3%A9tien" target="_blank" rel="noopener noreferrer">HAL ↗</a>
+          <a href="https://scholar.google.com/scholar?q=St%C3%A9phane+Chr%C3%A9tien" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="teaching" class="section-heading">
+      <h2><span lang="fr">Enseignement</span><span lang="en">Teaching</span></h2>
+      <div class="section-content">
+        <p lang="fr">Mes enseignements couvrent notamment la statistique,
+          l'apprentissage automatique, l'optimisation et l'apprentissage par renforcement.</p>
+        <p lang="en">My teaching includes statistics, machine learning,
+          optimization, and reinforcement learning.</p>
+        <p class="note" lang="fr">Vous pourrez ajouter ici vos supports de cours,
+          diapositives et notebooks Python.</p>
+        <p class="note" lang="en">Course notes, slide decks, and Python notebooks
+          can be added here.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="section-heading">
+      <h2>Contact</h2>
+      <div class="section-content">
+        <p>Université Lumière Lyon 2 · Laboratoire ERIC</p>
+        <p><a href="https://github.com/sgchretien">GitHub : @sgchretien ↗</a></p>
+        <p class="note" lang="fr">Ajoutez votre adresse professionnelle ou un lien vers votre page institutionnelle si vous souhaitez être contacté directement.</p>
+        <p class="note" lang="en">Add your professional email or institutional profile to enable direct contact.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container">
+    <span>© <span id="year">2026</span> Stéphane Chrétien</span>
+    <span><span lang="fr">Site publié avec GitHub Pages</span><span lang="en">Published with GitHub Pages</span></span>
+  </div></footer>
+  <script>
+    const button = document.getElementById("langToggle");
+    button.addEventListener("click", () => {
+      const english = document.body.classList.toggle("english");
+      document.documentElement.lang = english ? "en" : "fr";
+      button.textContent = english ? "FR" : "EN";
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
