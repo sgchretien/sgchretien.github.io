@@ -4,7 +4,7 @@
 <meta content="Page académique de Stéphane Chrétien : recherche en statistique et machine learning, publications, enseignements en Licence et Master MIASHS, supports de cours et notebooks." name="description"/>
 <meta content="#edf4f3" name="theme-color"/>
 <link href="assets/site.css" rel="stylesheet"/><style>
-/* Accueil : palette claire et illustration de convergence uniforme. */
+/* Accueil : palette claire et illustration Transformer. */
 :root{--dark:#223e51}
 .hero{background:linear-gradient(119deg,#edf4f3 0%,#f4f8f7 48%,#e7f0f2 100%);color:#22364a}
 .hero::before{opacity:.4;background-image:linear-gradient(90deg,transparent 98%,#d6e5e7 99%),linear-gradient(0deg,transparent 98%,#d6e5e7 99%);background-size:60px 60px;mask-image:linear-gradient(90deg,transparent 22%,#000)}
@@ -47,50 +47,76 @@
 @media(max-width:800px){.hero-inner{grid-template-columns:1fr;gap:34px}.generalization-art{max-width:610px;justify-self:start}.licence-levels{grid-template-columns:repeat(2,minmax(0,1fr))}.level-group-title{display:block}.level-group-title h3{margin-top:6px}}
 @media(max-width:580px){.hero-inner{padding:60px 0 56px}.generalization-art{padding:20px 13px 15px}.gen-art-heading{font-size:1.20rem}.gen-art-caption{font-size:.69rem}.licence-levels,.master-levels{grid-template-columns:1fr}.level-card{min-height:185px}.level-name{font-size:2.55rem}.level-card p{margin-bottom:15px}}
 @media(prefers-reduced-motion:reduce){.level-card{transition:none}}
+
+/* Figure Transformer : présentation académique, adaptable aux écrans mobiles. */
+.generalization-art{background:rgba(255,255,255,.98);border-color:#dce5e7;box-shadow:0 20px 45px rgba(30,68,82,.065)}
+.gen-art-tag{color:#486d7a;letter-spacing:.13em}
+.gen-art-heading{color:#244052;font-size:1.55rem}
+.gen-art-description{color:#657b87}
+.transformer-diagram{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:14px;align-items:stretch;margin:21px 0 17px}
+.attention-panel{border:1px solid #e1e9ea;background:#f7faf9;border-radius:13px;min-width:0;padding:17px 12px;display:flex;flex-direction:column;align-items:center}
+.figure-label{font:750 .67rem/1.4 system-ui,Arial,sans-serif;text-transform:uppercase;letter-spacing:.11em;color:#667e8a}
+.attention-panel .figure-label{align-self:flex-start}
+.attn-caption{align-self:flex-start;font:400 .74rem/1.5 system-ui,Arial,sans-serif;color:#7a8b93;margin-top:3px}
+.attn-heatmap{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;width:min(100%,150px);aspect-ratio:1;margin:25px 0 18px;}
+.attn-heatmap span{border-radius:4px;display:block;background:rgb(60 119 133 / var(--alpha));border:1px solid rgba(58,107,124,.055)}
+.attn-formula{font:italic 1.0rem/1.5 Georgia,serif;color:#355366;text-align:center;white-space:nowrap}
+.attn-legend{margin:6px 0 0;text-align:center;color:#7b8f95;font-size:.72rem}
+.input-tokens{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap;margin-top:auto;padding-top:18px}
+.input-tokens span{font:600 .69rem/1.3 system-ui,Arial,sans-serif;border:1px solid #cbdfe2;border-radius:5px;color:#416575;background:white;padding:4px 5px}
+.token-caption{margin-top:8px;color:#6d8791;font-size:.69rem;text-align:center}
+.encoder-diagram{border:1px solid #d2e0e5;background:linear-gradient(180deg,#f7fafc,#f9fbfc);border-radius:13px;padding:12px 13px;min-width:0}
+.encoder-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 1px 12px}
+.encoder-heading .figure-label{color:#436879}
+.encoder-repeated{background:#e8f0f4;color:#456b7e;border-radius:99px;padding:3px 9px;font-size:.73rem;font-weight:750}
+.encoder-stage{padding:9px 8px;border:1px solid #d1e0e6;border-radius:8px;text-align:center;background:white;color:#35536a;font:650 .83rem/1.35 system-ui,Arial,sans-serif}
+.encoder-stage span{display:block;font-weight:400;font-size:.68rem;color:#69808b;margin-top:3px}
+.encoder-stage.output{background:#eaf2f6;border-color:#c3d5df;color:#355c70}
+.encoder-stage.mha{background:#eaf5f0;border-color:#c2ddd0;color:#356e5d}
+.encoder-stage.ffn{background:#f9f2e9;border-color:#e7d4ba;color:#805d40}
+.encoder-stage.embedding{background:#eef1f4;border-color:#dae2e6;color:#5a6d79}
+.encoder-stage.norm{background:#fff;border-color:#dbe5e8;color:#617786;font-size:.76rem;padding:7px 8px}
+.encoder-arrow{height:15px;display:flex;justify-content:center;align-items:center;color:#8199a4;font-size:1.12rem;line-height:1;}
+.norm-line{display:grid;grid-template-columns:1fr;align-items:center;gap:3px}
+.norm-line .skip{display:inline-block;position:absolute;margin-left:0}
+.residual-note{font:500 .66rem/1.3 system-ui,Arial,sans-serif;color:#76909c;text-align:right;margin-top:2px}
+.figure-footnote{font-size:.73rem;line-height:1.65;color:#5d7580;border-top:1px solid #e2eae9;padding-top:13px;margin-top:1px}
+.figure-footnote strong{color:#346a74}
+@media(max-width:1080px){.transformer-diagram{gap:10px}.attention-panel{padding:14px 9px}.encoder-diagram{padding:11px}}
+@media(max-width:580px){.transformer-diagram{grid-template-columns:1fr;gap:12px}.attention-panel{display:grid;grid-template-columns:1.1fr .9fr;gap:4px 12px;align-items:center;padding:14px}.attention-panel .figure-label,.attention-panel .attn-caption{grid-column:1 / -1}.attn-heatmap{grid-column:1;grid-row:3 / 7;margin:12px auto;width:118px}.attn-formula{grid-column:2;grid-row:3;margin:3px 0 0;font-size:.90rem}.attn-legend{grid-column:2;grid-row:4;font-size:.66rem}.input-tokens{grid-column:2;grid-row:5;margin:0;padding:0}.token-caption{grid-column:2;grid-row:6;margin-top:0}.encoder-diagram{padding:12px 16px}.encoder-stage{font-size:.82rem}.figure-footnote{font-size:.7rem}}
 </style></head><body>
 <header class="topbar"><div class="container topbar-inner"><a class="brand" href="#accueil">Stéphane Chrétien<span class="dot">.</span></a><nav aria-label="Navigation principale" class="nav"><a href="#recherche">Recherche</a><a href="#enseignements">Enseignements</a><a href="#publications">Publications</a><a href="#contact">Contact</a></nav></div></header>
 <main>
-<section class="hero" id="accueil"><div class="container hero-inner"><div><div class="eyebrow">Statistics · Machine Learning · Applied Mathematics</div><h1>Stéphane<br/>Chrétien<span style="color:#397b80">.</span></h1><p class="intro">Professor at Université Lumière Lyon 2. Research at the interface of statistics, optimization, learning theory and data science.</p><p class="meta">Université Lumière Lyon 2 · Laboratoire ERIC (UR 3083)</p><div class="hero-actions"><a class="btn primary" href="#enseignements">Explorer les enseignements ↗</a><a class="btn outline" href="#recherche">Research interests</a></div></div><div aria-label="Diagramme de convergence uniforme : risques empiriques en abscisse, risques réels en ordonnée, les prédicteurs proches de la diagonale représentent de faibles écarts de généralisation." class="generalization-art" role="img">
-<div class="gen-art-top"><span class="gen-art-tag">STATISTICAL LEARNING THEORY</span><span class="gen-art-top-symbol">ℋ · P · n</span></div>
-<h2 class="gen-art-heading">Empirical risk &amp; generalization</h2>
-<p class="gen-art-description">Uniform convergence across a hypothesis class</p>
-<svg class="gen-art-svg" viewBox="0 0 570 405" role="presentation" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <clipPath id="gen-plot-clip"><rect x="95" y="70" width="400" height="235" rx="0"/></clipPath>
-    <linearGradient id="gen-band" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a0cbd3" stop-opacity=".47"/><stop offset="1" stop-color="#9bd1ca" stop-opacity=".29"/></linearGradient>
-  </defs>
-  <g stroke="#e5eded" stroke-width="1">
-    <path d="M95 258H495 M95 211H495 M95 164H495 M95 117H495 M175 70V305 M255 70V305 M335 70V305 M415 70V305" fill="none"/>
-  </g>
-  <g clip-path="url(#gen-plot-clip)">
-    <path d="M95 332 L495 97 L495 43 L95 278 Z" fill="url(#gen-band)"/>
-    <path d="M95 305 L495 70" fill="none" stroke="#367e8c" stroke-width="2.5"/>
-    <path d="M95 332 L495 97 M95 278 L495 43" fill="none" stroke="#a7cbd0" stroke-width="1.2" stroke-dasharray="5 7"/>
-    <circle cx="352.0" cy="144.5" r="2.5" fill="#ce8d78" fill-opacity="0.76"/><circle cx="250.6" cy="207.4" r="2.5" fill="#3f8391" fill-opacity="0.89"/><circle cx="279.0" cy="191.6" r="3.5" fill="#3f8391" fill-opacity="0.69"/><circle cx="441.9" cy="119.2" r="2.5" fill="#3f8391" fill-opacity="0.55"/><circle cx="155.3" cy="271.4" r="3.5" fill="#ce8d78" fill-opacity="0.83"/><circle cx="313.3" cy="169.2" r="2.5" fill="#3f8391" fill-opacity="0.83"/><circle cx="331.7" cy="168.9" r="2.5" fill="#3f8391" fill-opacity="0.77"/><circle cx="425.9" cy="110.7" r="2.5" fill="#3f8391" fill-opacity="0.79"/><circle cx="203.9" cy="245.6" r="2.5" fill="#ce8d78" fill-opacity="0.80"/><circle cx="421.5" cy="104.2" r="2.8" fill="#3f8391" fill-opacity="0.80"/><circle cx="231.9" cy="222.8" r="3.0" fill="#3f8391" fill-opacity="0.76"/><circle cx="222.6" cy="218.2" r="2.8" fill="#3f8391" fill-opacity="0.70"/><circle cx="200.0" cy="245.2" r="3.5" fill="#ce8d78" fill-opacity="0.56"/><circle cx="341.2" cy="162.1" r="3.0" fill="#3f8391" fill-opacity="0.77"/><circle cx="159.6" cy="271.5" r="2.5" fill="#3f8391" fill-opacity="0.56"/><circle cx="179.4" cy="261.5" r="2.8" fill="#3f8391" fill-opacity="0.76"/><circle cx="344.1" cy="155.9" r="2.5" fill="#ce8d78" fill-opacity="0.74"/><circle cx="307.1" cy="186.6" r="3.0" fill="#3f8391" fill-opacity="0.57"/><circle cx="167.3" cy="257.1" r="2.5" fill="#3f8391" fill-opacity="0.66"/><circle cx="153.0" cy="261.5" r="2.5" fill="#3f8391" fill-opacity="0.61"/><circle cx="186.6" cy="254.1" r="2.5" fill="#ce8d78" fill-opacity="0.89"/><circle cx="146.1" cy="274.0" r="2.8" fill="#3f8391" fill-opacity="0.79"/><circle cx="421.8" cy="115.3" r="3.0" fill="#3f8391" fill-opacity="0.87"/><circle cx="144.2" cy="283.3" r="2.8" fill="#3f8391" fill-opacity="0.79"/><circle cx="404.6" cy="136.0" r="2.5" fill="#ce8d78" fill-opacity="0.62"/><circle cx="443.8" cy="115.7" r="2.8" fill="#3f8391" fill-opacity="0.65"/><circle cx="375.8" cy="155.7" r="3.0" fill="#3f8391" fill-opacity="0.87"/><circle cx="406.4" cy="136.5" r="3.5" fill="#3f8391" fill-opacity="0.89"/><circle cx="427.7" cy="118.0" r="2.8" fill="#ce8d78" fill-opacity="0.77"/><circle cx="317.1" cy="180.9" r="2.5" fill="#3f8391" fill-opacity="0.63"/><circle cx="234.2" cy="240.0" r="3.0" fill="#3f8391" fill-opacity="0.88"/><circle cx="323.5" cy="169.8" r="2.5" fill="#3f8391" fill-opacity="0.71"/><circle cx="435.1" cy="100.4" r="2.8" fill="#ce8d78" fill-opacity="0.58"/><circle cx="206.6" cy="233.2" r="3.0" fill="#3f8391" fill-opacity="0.84"/><circle cx="185.9" cy="245.1" r="3.0" fill="#3f8391" fill-opacity="0.70"/><circle cx="163.0" cy="278.4" r="2.5" fill="#3f8391" fill-opacity="0.66"/><circle cx="131.8" cy="283.8" r="3.5" fill="#ce8d78" fill-opacity="0.82"/><circle cx="155.2" cy="277.0" r="2.5" fill="#3f8391" fill-opacity="0.88"/><circle cx="204.7" cy="240.5" r="2.5" fill="#3f8391" fill-opacity="0.68"/><circle cx="291.9" cy="177.0" r="3.0" fill="#3f8391" fill-opacity="0.88"/><circle cx="401.0" cy="133.2" r="2.8" fill="#ce8d78" fill-opacity="0.89"/><circle cx="180.4" cy="259.3" r="3.5" fill="#3f8391" fill-opacity="0.69"/><circle cx="251.1" cy="212.3" r="2.8" fill="#3f8391" fill-opacity="0.74"/><circle cx="354.3" cy="156.6" r="3.0" fill="#3f8391" fill-opacity="0.78"/>
-  </g>
-  <path d="M95 67 V305 H500" fill="none" stroke="#667f89" stroke-width="1.35"/>
-  <path d="M95 67 l-4.3 8.8 h8.6 z M500 305 l-8.8 -4.3 v8.6 z" fill="#667f89"/>
-  <text x="95" y="326" text-anchor="middle" fill="#77909a" font-size="12">0</text>
-  <text x="495" y="326" text-anchor="middle" fill="#77909a" font-size="12">1</text>
-  <text x="76" y="309" text-anchor="end" fill="#77909a" font-size="12">0</text>
-  <text x="76" y="75" text-anchor="end" fill="#77909a" font-size="12">1</text>
-  <text x="300" y="360" fill="#3c5969" font-size="16" text-anchor="middle" font-family="Georgia,serif" font-style="italic">R̂ₙ(f) <tspan font-size="12" font-style="normal">— empirical risk</tspan></text>
-  <text x="22" y="196" fill="#3c5969" font-size="16" transform="rotate(-90 22 196)" text-anchor="middle" font-family="Georgia,serif" font-style="italic">R(f) <tspan font-size="12" font-style="normal">— population risk</tspan></text>
-  <circle cx="125.0" cy="273.3" r="8.5" stroke="#fff" stroke-width="3.3" fill="#bd775e"/>
-  <circle cx="125.0" cy="273.3" r="12.2" stroke="#bd775e" stroke-width="1.3" fill="none" opacity=".42"/>
-  <path d="M138.0 262.3 L183.0 225.3" fill="none" stroke="#bc7a65" stroke-width="1.1"/>
-  <text x="187.0" y="219.3" font-family="Georgia,serif" font-size="15" font-style="italic" fill="#975841">f̂ₙ</text>
-  <text x="344" y="110" fill="#367e8c" font-size="12" font-weight="700" transform="rotate(-30 344 110)">R = R̂ₙ</text>
-  <g transform="translate(108 382)">
-    <rect width="10" height="10" rx="3" fill="#9fcdd0" fill-opacity=".75"/>
-    <text x="17" y="9" fill="#6c838a" font-size="11.8">confidence band</text>
-    <circle cx="179" cy="5" r="3.5" fill="#3f8391"/>
-    <text x="191" y="9" fill="#6c838a" font-size="11.8">hypotheses</text>
-    <circle cx="317" cy="5" r="4.2" fill="#bd775e"/>
-    <text x="328" y="9" fill="#6c838a" font-size="11.8">selected model</text>
-  </g>
-</svg>
-<div class="gen-art-caption"><strong>Uniform convergence</strong> &nbsp;·&nbsp; sup<sub>f∈ℋ</sub> |R(f) − R̂<sub>n</sub>(f)| ≤ ε<sub>n,δ</sub><br/>Finite ℋ, bounded loss · with probability at least 1 − δ</div>
+<section class="hero" id="accueil"><div class="container hero-inner"><div><div class="eyebrow">Statistics · Machine Learning · Applied Mathematics</div><h1>Stéphane<br/>Chrétien<span style="color:#397b80">.</span></h1><p class="intro">Professor at Université Lumière Lyon 2. Research at the interface of statistics, optimization, learning theory and data science.</p><p class="meta">Université Lumière Lyon 2 · Laboratoire ERIC (UR 3083)</p><div class="hero-actions"><a class="btn primary" href="#enseignements">Explorer les enseignements ↗</a><a class="btn outline" href="#recherche">Research interests</a></div></div><div aria-label="Schéma d’un encodeur Transformer : embeddings et encodage positionnel, auto-attention multi-tête, connexions résiduelles et normalisation, réseau feed-forward, représentations contextualisées. À gauche, exemple illustratif d’une matrice de poids d’attention." class="generalization-art transformer-art" role="img">
+<div class="gen-art-top"><span class="gen-art-tag">NEURAL NETWORK ARCHITECTURES</span><span class="gen-art-top-symbol">Vaswani et al. · 2017</span></div>
+<h2 class="gen-art-heading">Transformer encoder</h2>
+<p class="gen-art-description">Self-attention, residual connections and contextual representations</p>
+<div class="transformer-diagram">
+  <div class="attention-panel">
+    <div class="figure-label">Attention weights</div>
+    <div class="attn-caption">One head · illustrative</div>
+    <div class="attn-heatmap" aria-hidden="true"><span aria-hidden="true" style="--alpha:0.51"></span><span aria-hidden="true" style="--alpha:0.27"></span><span aria-hidden="true" style="--alpha:0.13"></span><span aria-hidden="true" style="--alpha:0.09"></span><span aria-hidden="true" style="--alpha:0.12"></span><span aria-hidden="true" style="--alpha:0.57"></span><span aria-hidden="true" style="--alpha:0.20"></span><span aria-hidden="true" style="--alpha:0.11"></span><span aria-hidden="true" style="--alpha:0.08"></span><span aria-hidden="true" style="--alpha:0.19"></span><span aria-hidden="true" style="--alpha:0.54"></span><span aria-hidden="true" style="--alpha:0.19"></span><span aria-hidden="true" style="--alpha:0.16"></span><span aria-hidden="true" style="--alpha:0.09"></span><span aria-hidden="true" style="--alpha:0.14"></span><span aria-hidden="true" style="--alpha:0.61"></span></div>
+    <div class="attn-formula">softmax(QKᵀ/√dₖ)</div>
+    <div class="attn-legend">Row-normalized weights</div>
+    <div class="input-tokens"><span>The</span><span>model</span><span>learns</span><span>…</span></div>
+    <div class="token-caption">Input tokens</div>
+  </div>
+  <div class="encoder-diagram">
+    <div class="encoder-heading"><span class="figure-label">Encoder layer</span><span class="encoder-repeated">× N</span></div>
+    <div class="encoder-stage output">Contextual token representations</div>
+    <div class="encoder-arrow" aria-hidden="true">↑</div>
+    <div class="encoder-stage norm">Residual + LayerNorm</div>
+    <div class="encoder-arrow" aria-hidden="true">↑</div>
+    <div class="encoder-stage ffn">Position-wise feed-forward<span>Linear · activation · linear</span></div>
+    <div class="encoder-arrow" aria-hidden="true">↑</div>
+    <div class="encoder-stage norm">Residual + LayerNorm</div>
+    <div class="encoder-arrow" aria-hidden="true">↑</div>
+    <div class="encoder-stage mha">Multi-head self-attention<span>Queries · keys · values</span></div>
+    <div class="encoder-arrow" aria-hidden="true">↑</div>
+    <div class="encoder-stage embedding">Token embeddings + position</div>
+  </div>
+</div>
+<div class="figure-footnote"><strong>Transformer encoder</strong> · Architecture schématique de type post-LayerNorm. Les poids d’attention représentés à gauche sont illustratifs.</div>
 </div></div></section>
 <div class="quickline"><div class="container quickline-inner"><div class="line-text"><strong>Université Lumière Lyon 2</strong>   /   Statistics · Machine Learning · Teaching</div><div class="line-links"><a href="https://github.com/sgchretien" rel="noopener noreferrer" target="_blank">GitHub ↗</a><a href="https://arxiv.org/search/?query=Stephane+Chretien&amp;searchtype=all" rel="noopener noreferrer" target="_blank">arXiv ↗</a><a href="https://hal.science/search/index/?q=St%C3%A9phane%20Chr%C3%A9tien" rel="noopener noreferrer" target="_blank">HAL ↗</a><a href="https://scholar.google.fr/citations?user=T8vcOB4AAAAJ&amp;hl=en" rel="noopener noreferrer" target="_blank">Scholar ↗</a></div></div></div>
 <section class="section" id="recherche"><div class="container"><div class="section-header"><div><div class="eyebrow">01 / Research</div><h2>Research<br/>interests</h2></div><p>My research explores mathematical and statistical aspects of machine learning, with particular interest in reliability, decision-making and the structure of complex data.</p></div><div class="research-grid"><article class="research-card"><div class="research-num">01 — Uncertainty</div><h3>Statistical learning &amp; uncertainty</h3><p>Conformal prediction, distribution shifts and statistical guarantees for data-driven procedures.</p></article><article class="research-card"><div class="research-num">02 — Sequential</div><h3>Online learning &amp; control</h3><p>Sequential learning, decision theory, reinforcement learning and optimization.</p></article><article class="research-card"><div class="research-num">03 — Geometry</div><h3>Geometry, kernels &amp; OT</h3><p>Optimal transport, structured representations, spectral methods and high-dimensional data.</p></article><article class="research-card"><div class="research-num">04 — Algorithms</div><h3>Robust optimization</h3><p>Stochastic methods, robust estimation and reliable computational learning.</p></article></div></div></section>
