@@ -84,39 +84,65 @@
 .figure-footnote strong{color:#346a74}
 @media(max-width:1080px){.transformer-diagram{gap:10px}.attention-panel{padding:14px 9px}.encoder-diagram{padding:11px}}
 @media(max-width:580px){.transformer-diagram{grid-template-columns:1fr;gap:12px}.attention-panel{display:grid;grid-template-columns:1.1fr .9fr;gap:4px 12px;align-items:center;padding:14px}.attention-panel .figure-label,.attention-panel .attn-caption{grid-column:1 / -1}.attn-heatmap{grid-column:1;grid-row:3 / 7;margin:12px auto;width:118px}.attn-formula{grid-column:2;grid-row:3;margin:3px 0 0;font-size:.90rem}.attn-legend{grid-column:2;grid-row:4;font-size:.66rem}.input-tokens{grid-column:2;grid-row:5;margin:0;padding:0}.token-caption{grid-column:2;grid-row:6;margin-top:0}.encoder-diagram{padding:12px 16px}.encoder-stage{font-size:.82rem}.figure-footnote{font-size:.7rem}}
+
+/* Encadré « Publication à la une » — rotation parmi les dix articles. */
+.featured-paper{width:100%;max-width:570px;justify-self:stretch;background:#fff;border:1px solid #d8e5e5;border-radius:17px;padding:24px;box-shadow:0 22px 52px rgba(32,72,87,.065);color:#274256;box-sizing:border-box}
+.feature-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:21px;gap:12px}
+.feature-kicker{font-size:.67rem;color:#347c80;letter-spacing:.16em;font-weight:800}
+.feature-counter{font-size:.75rem;letter-spacing:.12em;font-weight:700;color:#8aa2a8}
+.feature-layout{display:grid;grid-template-columns:42% minmax(0,1fr);gap:22px;align-items:center}
+.feature-page{display:flex;align-items:center;justify-content:center;min-height:300px;aspect-ratio:0.73;background:#f6f9fa;border:1px solid #dbe5e8;border-radius:4px;box-shadow:0 8px 19px rgba(40,60,70,.10);overflow:hidden;text-decoration:none;position:relative}
+.feature-page:hover{box-shadow:0 13px 28px rgba(40,60,70,.15)}
+.feature-page img{object-fit:contain;width:100%;height:100%;display:block;background:#fff}
+.feature-page img[hidden]{display:none}
+.feature-placeholder[hidden]{display:none}
+.feature-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#8798a1;font:600 1rem/1.5 Georgia,serif;text-align:center;gap:8px;padding:12px}
+.feature-blank-paper-icon{font:normal 3.5rem/1 Georgia,serif;color:#b5ccd1}
+.feature-label{margin:0 0 14px;color:#69838b;text-transform:uppercase;font-weight:750;letter-spacing:.12em;font-size:.65rem}
+.feature-title{font:normal clamp(1.14rem,1.9vw,1.57rem)/1.35 Georgia,serif;color:#284252;margin:0 0 17px;letter-spacing:-.025em;overflow-wrap:break-word}
+.feature-year{font-size:.80rem;letter-spacing:.08em;color:#678088;font-weight:750;margin:0 0 20px}
+.feature-actions{display:flex;flex-wrap:wrap;gap:12px}
+.feature-view{font-size:.81rem;font-weight:750;color:#22717b;text-decoration:none;border-bottom:1px solid #9ec6cc;padding-bottom:5px}
+.feature-view:hover{color:#134d53}
+.feature-next{border:0;border-bottom:1px solid #bdcdd1;background:none;color:#677d84;padding:0 0 5px;cursor:pointer;font-family:inherit;font-size:.81rem;font-weight:650;line-height:1.5}
+.feature-next:hover{color:#1f5862}
+.feature-footnote{margin:18px 0 0;padding-top:12px;border-top:1px solid #e1e9eb;font-size:.74rem;color:#72858b;line-height:1.45}
+@media(max-width:1100px){.featured-paper{padding:18px}.feature-layout{gap:15px}.feature-page{min-height:255px}}
+@media(max-width:580px){.featured-paper{padding:17px}.feature-page{min-height:215px}.feature-layout{grid-template-columns:40% minmax(0,1fr);gap:12px}.feature-title{font-size:1.02rem;line-height:1.35}.feature-actions{gap:9px}.feature-next,.feature-view{font-size:.73rem}}
+
+/* Présentation de l'aperçu d'une publication : large, lisible et responsive. */
+.featured-paper{padding:18px 22px 17px;max-width:620px}
+.feature-head{margin-bottom:13px}
+.feature-layout{display:flex;flex-direction:column;align-items:stretch;gap:16px}
+.feature-page{width:100%;height:236px;min-height:0;aspect-ratio:auto;border-radius:7px;background:#f7f9f9;box-shadow:0 6px 18px rgba(40,60,70,.08)}
+.feature-page img{object-fit:contain;width:100%;height:100%;background:#fff}
+.feature-placeholder[hidden]{display:none !important}
+.feature-content{width:100%}
+.feature-label{margin-bottom:6px}
+.feature-title{font:normal clamp(1.15rem,1.6vw,1.38rem)/1.30 Georgia,serif;margin-bottom:7px}
+.feature-year{font-size:.78rem;margin-bottom:12px}
+.feature-actions{align-items:center;gap:20px}
+.feature-footnote{margin:14px 0 0;padding-top:10px}
+@media(max-width:800px){.featured-paper{max-width:630px}}
+@media(max-width:580px){.featured-paper{padding:13px}.feature-page{height:195px}.feature-title{font-size:1.13rem}}
 </style></head><body>
 <header class="topbar"><div class="container topbar-inner"><a class="brand" href="#accueil">Stéphane Chrétien<span class="dot">.</span></a><nav aria-label="Navigation principale" class="nav"><a href="#recherche">Recherche</a><a href="#enseignements">Enseignements</a><a href="#publications">Publications</a><a href="#contact">Contact</a></nav></div></header>
 <main>
-<section class="hero" id="accueil"><div class="container hero-inner"><div><div class="eyebrow">Statistics · Machine Learning · Applied Mathematics</div><h1>Stéphane<br/>Chrétien<span style="color:#397b80">.</span></h1><p class="intro">Professor at Université Lumière Lyon 2. Research at the interface of statistics, optimization, learning theory and data science.</p><p class="meta">Université Lumière Lyon 2 · Laboratoire ERIC (UR 3083)</p><div class="hero-actions"><a class="btn primary" href="#enseignements">Explorer les enseignements ↗</a><a class="btn outline" href="#recherche">Research interests</a></div></div><div aria-label="Schéma d’un encodeur Transformer : embeddings et encodage positionnel, auto-attention multi-tête, connexions résiduelles et normalisation, réseau feed-forward, représentations contextualisées. À gauche, exemple illustratif d’une matrice de poids d’attention." class="generalization-art transformer-art" role="img">
-<div class="gen-art-top"><span class="gen-art-tag">NEURAL NETWORK ARCHITECTURES</span><span class="gen-art-top-symbol">Vaswani et al. · 2017</span></div>
-<h2 class="gen-art-heading">Transformer encoder</h2>
-<p class="gen-art-description">Self-attention, residual connections and contextual representations</p>
-<div class="transformer-diagram">
-  <div class="attention-panel">
-    <div class="figure-label">Attention weights</div>
-    <div class="attn-caption">One head · illustrative</div>
-    <div class="attn-heatmap" aria-hidden="true"><span aria-hidden="true" style="--alpha:0.51"></span><span aria-hidden="true" style="--alpha:0.27"></span><span aria-hidden="true" style="--alpha:0.13"></span><span aria-hidden="true" style="--alpha:0.09"></span><span aria-hidden="true" style="--alpha:0.12"></span><span aria-hidden="true" style="--alpha:0.57"></span><span aria-hidden="true" style="--alpha:0.20"></span><span aria-hidden="true" style="--alpha:0.11"></span><span aria-hidden="true" style="--alpha:0.08"></span><span aria-hidden="true" style="--alpha:0.19"></span><span aria-hidden="true" style="--alpha:0.54"></span><span aria-hidden="true" style="--alpha:0.19"></span><span aria-hidden="true" style="--alpha:0.16"></span><span aria-hidden="true" style="--alpha:0.09"></span><span aria-hidden="true" style="--alpha:0.14"></span><span aria-hidden="true" style="--alpha:0.61"></span></div>
-    <div class="attn-formula">softmax(QKᵀ/√dₖ)</div>
-    <div class="attn-legend">Row-normalized weights</div>
-    <div class="input-tokens"><span>The</span><span>model</span><span>learns</span><span>…</span></div>
-    <div class="token-caption">Input tokens</div>
-  </div>
-  <div class="encoder-diagram">
-    <div class="encoder-heading"><span class="figure-label">Encoder layer</span><span class="encoder-repeated">× N</span></div>
-    <div class="encoder-stage output">Contextual token representations</div>
-    <div class="encoder-arrow" aria-hidden="true">↑</div>
-    <div class="encoder-stage norm">Residual + LayerNorm</div>
-    <div class="encoder-arrow" aria-hidden="true">↑</div>
-    <div class="encoder-stage ffn">Position-wise feed-forward<span>Linear · activation · linear</span></div>
-    <div class="encoder-arrow" aria-hidden="true">↑</div>
-    <div class="encoder-stage norm">Residual + LayerNorm</div>
-    <div class="encoder-arrow" aria-hidden="true">↑</div>
-    <div class="encoder-stage mha">Multi-head self-attention<span>Queries · keys · values</span></div>
-    <div class="encoder-arrow" aria-hidden="true">↑</div>
-    <div class="encoder-stage embedding">Token embeddings + position</div>
-  </div>
-</div>
-<div class="figure-footnote"><strong>Transformer encoder</strong> · Architecture schématique de type post-LayerNorm. Les poids d’attention représentés à gauche sont illustratifs.</div>
+<section class="hero" id="accueil"><div class="container hero-inner"><div><div class="eyebrow">Statistics · Machine Learning · Applied Mathematics</div><h1>Stéphane<br/>Chrétien<span style="color:#397b80">.</span></h1><p class="intro">Professor at Université Lumière Lyon 2. Research at the interface of statistics, optimization, learning theory and data science.</p><p class="meta">Université Lumière Lyon 2 · Laboratoire ERIC (UR 3083)</p><div class="hero-actions"><a class="btn primary" href="#enseignements">Explorer les enseignements ↗</a><a class="btn outline" href="#recherche">Research interests</a></div></div><div class="featured-paper" aria-label="Publication sélectionnée aléatoirement parmi dix articles de recherche">
+<div class="feature-head"><span class="feature-kicker">PUBLICATION À LA UNE</span><span class="feature-counter" id="paper-position">01 / 10</span></div>
+<div class="feature-layout">
+<a class="feature-page" id="paper-preview-link" href="https://scholar.google.fr/citations?user=T8vcOB4AAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir la publication">
+<img id="paper-first-page" alt="Capture de la page de la publication sélectionnée" width="480" height="660" loading="eager" decoding="async" hidden>
+<span class="feature-placeholder" id="paper-awaiting-image"><span class="feature-blank-paper-icon" aria-hidden="true">≡</span><span>Aperçu temporairement indisponible</span></span>
+</a>
+<div class="feature-content"><p class="feature-label">Article sélectionné</p>
+<h2 id="paper-title" class="feature-title">Publication scientifique</h2>
+<p id="paper-year" class="feature-year"></p>
+<div class="feature-actions">
+<a class="feature-view" id="paper-link" href="https://scholar.google.fr/citations?user=T8vcOB4AAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Consulter l'article <span aria-hidden="true">↗</span></a>
+<button type="button" id="another-paper" class="feature-next" aria-label="Afficher une autre publication">Autre article <span aria-hidden="true">↻</span></button>
+</div></div></div>
+<p class="feature-footnote">Un article différent apparaît à chaque rechargement de la page.</p>
 </div></div></section>
 <div class="quickline"><div class="container quickline-inner"><div class="line-text"><strong>Université Lumière Lyon 2</strong>   /   Statistics · Machine Learning · Teaching</div><div class="line-links"><a href="https://github.com/sgchretien" rel="noopener noreferrer" target="_blank">GitHub ↗</a><a href="https://arxiv.org/search/?query=Stephane+Chretien&amp;searchtype=all" rel="noopener noreferrer" target="_blank">arXiv ↗</a><a href="https://hal.science/search/index/?q=St%C3%A9phane%20Chr%C3%A9tien" rel="noopener noreferrer" target="_blank">HAL ↗</a><a href="https://scholar.google.fr/citations?user=T8vcOB4AAAAJ&amp;hl=en" rel="noopener noreferrer" target="_blank">Scholar ↗</a></div></div></div>
 <section class="section" id="recherche"><div class="container"><div class="section-header"><div><div class="eyebrow">01 / Research</div><h2>Research<br/>interests</h2></div><p>My research explores mathematical and statistical aspects of machine learning, with particular interest in reliability, decision-making and the structure of complex data.</p></div><div class="research-grid"><article class="research-card"><div class="research-num">01 — Uncertainty</div><h3>Statistical learning &amp; uncertainty</h3><p>Conformal prediction, distribution shifts and statistical guarantees for data-driven procedures.</p></article><article class="research-card"><div class="research-num">02 — Sequential</div><h3>Online learning &amp; control</h3><p>Sequential learning, decision theory, reinforcement learning and optimization.</p></article><article class="research-card"><div class="research-num">03 — Geometry</div><h3>Geometry, kernels &amp; OT</h3><p>Optimal transport, structured representations, spectral methods and high-dimensional data.</p></article><article class="research-card"><div class="research-num">04 — Algorithms</div><h3>Robust optimization</h3><p>Stochastic methods, robust estimation and reliable computational learning.</p></article></div></div></section>
@@ -145,4 +171,42 @@
 </section>
 <section class="section" id="publications"><div class="container"><div class="section-header"><div><div class="eyebrow">03 / Publications</div><h2>Publications<br/>&amp; preprints</h2></div><p>Articles, preprints et ressources de recherche. Les archives et index bibliographiques permettent de consulter les versions les plus récentes.</p></div><div class="pub-area"><div class="pub-panel"><h3>Explore selected research repositories</h3><p>Les liens ci-dessous ouvrent des recherches bibliographiques sur mon nom. Une liste éditoriale de publications sélectionnées pourra être ajoutée ultérieurement.</p><div class="pub-links"><a href="https://arxiv.org/search/?query=Stephane+Chretien&amp;searchtype=all" rel="noopener noreferrer" target="_blank">arXiv <span>↗</span></a><a href="https://hal.science/search/index/?q=St%C3%A9phane%20Chr%C3%A9tien" rel="noopener noreferrer" target="_blank">HAL <span>↗</span></a><a href="https://scholar.google.fr/citations?user=T8vcOB4AAAAJ&amp;hl=en" rel="noopener noreferrer" target="_blank">Google Scholar <span>↗</span></a><a href="https://github.com/sgchretien" rel="noopener noreferrer" target="_blank">GitHub <span>↗</span></a></div></div><div class="affiliation"><strong>Université Lumière Lyon 2</strong><div>Laboratoire ERIC · UR 3083<br/>Statistics · Machine Learning · Optimization</div><div class="textlinks"><a class="textlink" href="https://github.com/sgchretien" rel="noopener noreferrer" target="_blank">Research code ↗</a></div></div></div></div></section>
 </main><footer class="footer" id="contact"><div class="container"><div class="footer-grid"><div><strong>Stéphane Chrétien.</strong><p>Research, teaching, and open educational resources in mathematical statistics and machine learning.</p></div><div class="footer-links"><a href="https://github.com/sgchretien" rel="noopener noreferrer" target="_blank">GitHub ↗</a><a href="#enseignements">Niveaux d’enseignement ↗</a><a href="#accueil">Back to top ↑</a></div></div><div class="bottom"><span>© <span id="year">2026</span> Stéphane Chrétien</span><span>Built for GitHub Pages · Academic teaching archive</span></div></div></footer>
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script></body></html>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+/* Rotate publication on every page load; avoid showing the same paper twice in succession. */
+(()=> {
+const papers = [{"title":"On EM algorithms and their proximal generalizations","year":2008,"journal":"ESAIM: Probability and Statistics","url":"https://doi.org/10.1051/ps:2007041","image":"assets/papers/paper-01.webp"},{"title":"Kullback proximal algorithms for maximum-likelihood estimation","year":2000,"journal":"IEEE Transactions on Information Theory","url":"https://doi.org/10.1109/18.857792","image":"assets/papers/paper-02.webp"},{"title":"Degeneracy in the maximum likelihood estimation of univariate Gaussian mixtures with EM","year":2003,"journal":"Statistics & Probability Letters","url":"https://doi.org/10.1016/S0167-7152(02)00396-6","image":"assets/papers/paper-03.webp"},{"title":"Sparse Recovery With Unknown Variance: A LASSO-Type Approach","year":2014,"journal":"IEEE Transactions on Information Theory","url":"https://doi.org/10.1109/TIT.2014.2301162","image":"assets/papers/paper-04.webp"},{"title":"Multivariate GARCH estimation via a Bregman-proximal trust-region method","year":2014,"journal":"Computational Statistics & Data Analysis","url":"https://doi.org/10.1016/j.csda.2012.10.020","image":"assets/papers/paper-05.webp"},{"title":"Cyclic projection methods on a class of nonconvex sets","year":1996,"journal":"Numerical Functional Analysis and Optimization","url":"https://doi.org/10.1080/01630569608816681","image":"assets/papers/paper-06.webp"},{"title":"A Bregman-proximal point algorithm for robust non-negative matrix factorization with possible missing values and outliers – application to gene expression analysis","year":2016,"journal":"BMC Bioinformatics","url":"https://doi.org/10.1186/s12859-016-1120-8","image":"assets/papers/paper-07.webp"},{"title":"Von Neumann's trace inequality for tensors","year":2015,"journal":"Linear Algebra and its Applications","url":"https://doi.org/10.1016/j.laa.2015.05.015","image":"assets/papers/paper-08.webp"},{"title":"Sensing Tensors With Gaussian Filters","year":2017,"journal":"IEEE Transactions on Information Theory","url":"https://doi.org/10.1109/TIT.2016.2633413","image":"assets/papers/paper-09.webp"},{"title":"Learning with semi-definite programming: statistical bounds based on fixed point analysis and excess risk curvature","year":2021,"journal":"Journal of Machine Learning Research","url":"https://www.jmlr.org/papers/v22/21-0021.html","image":"assets/papers/paper-10.webp"}];
+let previous=-1;
+try {
+  const saved=sessionStorage.getItem("lastFeaturedPaper");
+  if(saved!==null && /^\d+$/.test(saved)) {
+    const value=Number(saved);
+    if(value>=0 && value<papers.length) previous=value;
+  }
+} catch(e) {}
+let current=-1;
+function showPaper() {
+  let choice=Math.floor(Math.random()*(papers.length-(papers.length>1&&previous>=0?1:0)));
+  if(previous>=0 && papers.length>1 && choice>=previous) choice++;
+  current=choice;
+  previous=current;
+  try {sessionStorage.setItem("lastFeaturedPaper", String(current));} catch(e){}
+  const item=papers[current];
+  document.getElementById("paper-title").textContent=item.title;
+  document.getElementById("paper-year").textContent=item.journal+" · "+item.year;
+  document.getElementById("paper-position").textContent=String(current+1).padStart(2,"0")+" / "+papers.length;
+  document.getElementById("paper-link").href=item.url;
+  document.getElementById("paper-preview-link").href=item.url;
+  const img=document.getElementById("paper-first-page");
+  const fallback=document.getElementById("paper-awaiting-image");
+  img.hidden=true; fallback.hidden=false;
+  img.onload=()=>{if(img.getAttribute("src")===item.image){img.hidden=false;fallback.hidden=true;}};
+  img.onerror=()=>{if(img.getAttribute("src")===item.image){img.hidden=true;fallback.hidden=false;}};
+  img.src=item.image;
+  img.alt="Capture de la page de publication : "+item.title;
+}
+document.getElementById("another-paper").addEventListener("click",showPaper);
+showPaper();
+})();
+</script>
+</body></html>
