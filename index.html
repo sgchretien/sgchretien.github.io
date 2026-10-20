@@ -130,6 +130,14 @@
 .research-six .research-card h3{font-size:1.32rem;line-height:1.3;overflow-wrap:anywhere}
 @media(max-width:940px){.research-six{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:580px){.research-six{grid-template-columns:1fr}}
+
+/* Research topics link to targeted Google Scholar searches. */
+#recherche .research-topic-link{color:inherit;text-decoration:none;text-underline-offset:4px;transition:color .18s ease}
+#recherche .research-topic-link::after{content:"↗";font-family:system-ui,sans-serif;font-size:.69em;font-weight:600;display:inline-block;margin-left:.38em;color:#478c96;vertical-align:.12em;transition:transform .18s ease}
+#recherche .research-topic-link:hover{color:#246e7b;text-decoration:underline}
+#recherche .research-topic-link:hover::after{transform:translate(2px,-2px)}
+#recherche .research-topic-link:focus-visible{outline:2px solid #247d89;outline-offset:4px;border-radius:2px}
+@media(prefers-reduced-motion:reduce){#recherche .research-topic-link,#recherche .research-topic-link::after{transition:none}}
 </style></head><body>
 <header class="topbar"><div class="container topbar-inner"><a class="brand" href="#accueil">Stéphane Chrétien<span class="dot">.</span></a><nav aria-label="Navigation principale" class="nav"><a href="#recherche">Recherche</a><a href="#enseignements">Enseignements</a><a href="#publications">Publications</a><a href="#contact">Contact</a></nav></div></header>
 <main>
@@ -153,12 +161,12 @@
 <section class="section" id="recherche"><div class="container">
 <div class="section-header"><div><div class="eyebrow">01 / Research</div><h2>Research<br/>interests</h2></div><p>My research explores mathematical methods for learning and optimization, spanning statistical estimation, structured reconstruction, dynamical systems, and uncertainty quantification.</p></div>
 <div class="research-grid research-six">
-<article class="research-card"><div class="research-num">01 — Estimation</div><h3>EM and Proximal Algorithms</h3><p>Expectation–maximization, proximal methods, and convergence analysis.</p></article>
-<article class="research-card"><div class="research-num">02 — Inverse Problems</div><h3>Sparse and Low-Rank Recovery</h3><p>Sparse signal recovery, low-rank matrix and tensor reconstruction, and inverse problems.</p></article>
-<article class="research-card"><div class="research-num">03 — Path Representations</div><h3>Signature Theory</h3><p>Path signatures, algebraic structures, and representations of sequential data.</p></article>
-<article class="research-card"><div class="research-num">04 — Operations Research</div><h3>Combinatorial Optimization and Vehicle Routing</h3><p>Discrete optimization, combinatorial algorithms, and vehicle routing problems (VRP).</p></article>
-<article class="research-card"><div class="research-num">05 — Dynamics</div><h3>Dynamical Systems and Koopman Operators</h3><p>Nonlinear dynamical systems, Koopman operators, and spectral representations.</p></article>
-<article class="research-card"><div class="research-num">06 — Statistical Guarantees</div><h3>Uncertainty Quantification and Conformal Prediction</h3><p>Distribution-free predictive inference, prediction sets, and coverage guarantees.</p></article>
+<article class="research-card"><div class="research-num">01 — Estimation</div><h3><a class="research-topic-link" href="https://scholar.google.fr/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=st%C3%A9phane+chr%C3%A9tien+EM+proximal+algorithms" target="_blank" rel="noopener noreferrer" aria-label="Search Google Scholar for Stéphane Chrétien and EM and Proximal Algorithms">EM and Proximal Algorithms</a></h3><p>Expectation–maximization, proximal methods, and convergence analysis.</p></article>
+<article class="research-card"><div class="research-num">02 — Inverse Problems</div><h3><a class="research-topic-link" href="https://scholar.google.fr/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=st%C3%A9phane+chr%C3%A9tien+sparse+low+rank+recovery" target="_blank" rel="noopener noreferrer" aria-label="Search Google Scholar for Stéphane Chrétien and Sparse and Low-Rank Recovery">Sparse and Low-Rank Recovery</a></h3><p>Sparse signal recovery, low-rank matrix and tensor reconstruction, and inverse problems.</p></article>
+<article class="research-card"><div class="research-num">03 — Path Representations</div><h3><a class="research-topic-link" href="https://scholar.google.fr/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=st%C3%A9phane+chr%C3%A9tien+signature+theory" target="_blank" rel="noopener noreferrer" aria-label="Search Google Scholar for Stéphane Chrétien and Signature Theory">Signature Theory</a></h3><p>Path signatures, algebraic structures, and representations of sequential data.</p></article>
+<article class="research-card"><div class="research-num">04 — Operations Research</div><h3><a class="research-topic-link" href="https://scholar.google.fr/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=st%C3%A9phane+chr%C3%A9tien+combinatorial+optimization+vehicle+routing" target="_blank" rel="noopener noreferrer" aria-label="Search Google Scholar for Stéphane Chrétien and Combinatorial Optimization and Vehicle Routing">Combinatorial Optimization and Vehicle Routing</a></h3><p>Discrete optimization, combinatorial algorithms, and vehicle routing problems (VRP).</p></article>
+<article class="research-card"><div class="research-num">05 — Dynamics</div><h3><a class="research-topic-link" href="https://scholar.google.fr/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=st%C3%A9phane+chr%C3%A9tien+dynamical+systems+Koopman+operators" target="_blank" rel="noopener noreferrer" aria-label="Search Google Scholar for Stéphane Chrétien and Dynamical Systems and Koopman Operators">Dynamical Systems and Koopman Operators</a></h3><p>Nonlinear dynamical systems, Koopman operators, and spectral representations.</p></article>
+<article class="research-card"><div class="research-num">06 — Statistical Guarantees</div><h3><a class="research-topic-link" href="https://scholar.google.fr/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=st%C3%A9phane+chr%C3%A9tien+conformal+prediction+uncertainty+quantification" target="_blank" rel="noopener noreferrer" aria-label="Search Google Scholar for Stéphane Chrétien and Uncertainty Quantification and Conformal Prediction">Uncertainty Quantification and Conformal Prediction</a></h3><p>Distribution-free predictive inference, prediction sets, and coverage guarantees.</p></article>
 </div></div></section>
 <section class="section courses levels-section" id="enseignements">
 <div class="container">
