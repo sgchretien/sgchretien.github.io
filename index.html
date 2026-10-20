@@ -125,13 +125,11 @@
 @media(max-width:800px){.featured-paper{max-width:630px}}
 @media(max-width:580px){.featured-paper{padding:13px}.feature-page{height:195px}.feature-title{font-size:1.13rem}}
 
-/* Research interests: five balanced cards, in three then two columns. */
-.research-five{grid-template-columns:repeat(6,minmax(0,1fr))}
-.research-five>.research-card{grid-column:span 2}
-.research-five>.research-card:nth-child(n+4){grid-column:span 3}
-.research-five .research-card h3{font-size:1.32rem;line-height:1.3;overflow-wrap:anywhere}
-@media(max-width:940px){.research-five{grid-template-columns:repeat(2,minmax(0,1fr))}.research-five>.research-card,.research-five>.research-card:nth-child(n+4){grid-column:auto}}
-@media(max-width:580px){.research-five{grid-template-columns:1fr}}
+/* Research interests: six topics, three columns × two rows. */
+.research-six{grid-template-columns:repeat(3,minmax(0,1fr))}
+.research-six .research-card h3{font-size:1.32rem;line-height:1.3;overflow-wrap:anywhere}
+@media(max-width:940px){.research-six{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.research-six{grid-template-columns:1fr}}
 </style></head><body>
 <header class="topbar"><div class="container topbar-inner"><a class="brand" href="#accueil">Stéphane Chrétien<span class="dot">.</span></a><nav aria-label="Navigation principale" class="nav"><a href="#recherche">Recherche</a><a href="#enseignements">Enseignements</a><a href="#publications">Publications</a><a href="#contact">Contact</a></nav></div></header>
 <main>
@@ -153,13 +151,14 @@
 </div></div></section>
 <div class="quickline"><div class="container quickline-inner"><div class="line-text"><strong>Université Lumière Lyon 2</strong>   /   Statistics · Machine Learning · Teaching</div><div class="line-links"><a href="https://github.com/sgchretien" rel="noopener noreferrer" target="_blank">GitHub ↗</a><a href="https://arxiv.org/search/?query=Stephane+Chretien&amp;searchtype=all" rel="noopener noreferrer" target="_blank">arXiv ↗</a><a href="https://hal.science/search/index/?q=St%C3%A9phane%20Chr%C3%A9tien" rel="noopener noreferrer" target="_blank">HAL ↗</a><a href="https://scholar.google.fr/citations?user=T8vcOB4AAAAJ&amp;hl=en" rel="noopener noreferrer" target="_blank">Scholar ↗</a></div></div></div>
 <section class="section" id="recherche"><div class="container">
-<div class="section-header"><div><div class="eyebrow">01 / Research</div><h2>Research<br/>interests</h2></div><p>Mes recherches portent sur l'analyse mathématique des algorithmes, la reconstruction de données structurées, l'optimisation et les systèmes dynamiques.</p></div>
-<div class="research-grid research-five">
-<article class="research-card"><div class="research-num">01 — Estimation</div><h3>Algorithmes EM et algorithmes proximaux</h3><p>Méthodes itératives d'estimation, approches proximales et analyse de convergence.</p></article>
-<article class="research-card"><div class="research-num">02 — Reconstruction</div><h3>Reconstruction sparse et de faible rang</h3><p>Reconstruction parcimonieuse, récupération de structures de faible rang et problèmes inverses.</p></article>
-<article class="research-card"><div class="research-num">03 — Structures de chemins</div><h3>Théorie des signatures</h3><p>Signatures de chemins, structures algébriques et représentations de données séquentielles.</p></article>
-<article class="research-card"><div class="research-num">04 — Recherche opérationnelle</div><h3>Optimisation combinatoire et planification de tournées</h3><p>Optimisation discrète et problèmes de tournées de véhicules (VRP).</p></article>
-<article class="research-card"><div class="research-num">05 — Dynamique</div><h3>Systèmes dynamiques et opérateurs de Koopman</h3><p>Étude des dynamiques non linéaires par les opérateurs et les représentations spectrales.</p></article>
+<div class="section-header"><div><div class="eyebrow">01 / Research</div><h2>Research<br/>interests</h2></div><p>My research explores mathematical methods for learning and optimization, spanning statistical estimation, structured reconstruction, dynamical systems, and uncertainty quantification.</p></div>
+<div class="research-grid research-six">
+<article class="research-card"><div class="research-num">01 — Estimation</div><h3>EM and Proximal Algorithms</h3><p>Expectation–maximization, proximal methods, and convergence analysis.</p></article>
+<article class="research-card"><div class="research-num">02 — Inverse Problems</div><h3>Sparse and Low-Rank Recovery</h3><p>Sparse signal recovery, low-rank matrix and tensor reconstruction, and inverse problems.</p></article>
+<article class="research-card"><div class="research-num">03 — Path Representations</div><h3>Signature Theory</h3><p>Path signatures, algebraic structures, and representations of sequential data.</p></article>
+<article class="research-card"><div class="research-num">04 — Operations Research</div><h3>Combinatorial Optimization and Vehicle Routing</h3><p>Discrete optimization, combinatorial algorithms, and vehicle routing problems (VRP).</p></article>
+<article class="research-card"><div class="research-num">05 — Dynamics</div><h3>Dynamical Systems and Koopman Operators</h3><p>Nonlinear dynamical systems, Koopman operators, and spectral representations.</p></article>
+<article class="research-card"><div class="research-num">06 — Statistical Guarantees</div><h3>Uncertainty Quantification and Conformal Prediction</h3><p>Distribution-free predictive inference, prediction sets, and coverage guarantees.</p></article>
 </div></div></section>
 <section class="section courses levels-section" id="enseignements">
 <div class="container">
