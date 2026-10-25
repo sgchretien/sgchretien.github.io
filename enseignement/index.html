@@ -1,5 +1,105 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Choisissez un parcours, une année puis un cours. Les TD, anciennes versions et contenus connexes restent regroupés sous leur cours."><title>Enseignements · Stéphane Chrétien</title><link rel="stylesheet" href="../assets/site.css"></head><body class="course-page">
-<header class="topbar"><div class="container topbar-inner"><a class="brand" href="../index.html">Stéphane Chrétien<span class="dot">.</span></a><nav class="nav"><a href="../index.html#recherche">Recherche</a><a href="index.html">Enseignements</a><a href="../index.html#publications">Publications</a><a href="../index.html#contact">Contact</a></nav></div></header>
-<main><section class="course-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Accueil</a>  <span aria-hidden="true">›</span> <span>Enseignements</span></div><div class="eyebrow">Enseignements · Université Lumière Lyon 2</div><h1>Enseignements</h1><p class="subtitle">Choisissez un parcours, une année puis un cours. Les TD, anciennes versions et contenus connexes restent regroupés sous leur cours.</p></div></section>
-<div class="container course-layout"><article class="course-main"><p class="hub-summary">Choisissez un parcours, une année puis un cours. Les TD, anciennes versions et contenus connexes restent regroupés sous leur cours.</p><div class="course-innerlinks"><a href="licence/miashs/index.html"><span>Licence MIASHS</span><span>↗</span></a><a href="master/miashs/index.html"><span>Master MIASHS</span><span>↗</span></a><a href="autres/index.html"><span>Autres formations</span><span>↗</span></a></div></article><aside class="course-aside"><div class="aside-card"><h3>Navigation</h3><a href="index.html">← Tous les enseignements</a><a href="../index.html">↑ Rubrique précédente</a></div></aside></div></main>
-<footer class="footer"><div class="container"><div class="bottom"><span>© 2026 Stéphane Chrétien · Université Lumière Lyon 2</span><span>Pages de cours hébergées sur GitHub Pages</span></div></div></footer></body></html>
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Enseignements de Stéphane Chrétien : Licence et Master MIASHS, biostatistiques, apprentissage automatique, modélisation statistique et ressources R.">
+  <title>Enseignements · Stéphane Chrétien</title>
+  <link rel="stylesheet" href="../assets/site.css">
+  <style>
+    /* Styles propres au sommaire : les pages de cours restent inchangées. */
+    .teaching-hub {padding:48px 0 82px;}
+    .teaching-hub h2 {font:500 clamp(1.55rem,2.6vw,2.1rem)/1.2 Georgia,serif;letter-spacing:-.025em;color:#20394b;margin:0 0 9px;}
+    .teaching-hub .section-intro {color:#566b76;max-width:76ch;margin:0 0 22px;font-size:.96rem;line-height:1.75;}
+    .teaching-hub .group-heading {display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:0 0 20px;}
+    .teaching-hub .group-heading a {font-size:.85rem;font-weight:700;color:#287680;text-decoration:none;}
+    .teaching-hub .group-heading a:hover {text-decoration:underline;}
+    .teach-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+    .teach-card {display:flex;flex-direction:column;align-items:flex-start;gap:11px;border:1px solid #d6e5e4;border-radius:13px;background:white;padding:25px 25px 21px;box-shadow:0 6px 23px rgba(28,64,77,.035);color:#233c4b;text-decoration:none;transition:border-color .2s,transform .2s,box-shadow .2s;}
+    .teach-card:hover,.teach-card:focus-visible {border-color:#73a4a2;transform:translateY(-3px);box-shadow:0 14px 29px rgba(28,64,77,.085);}
+    .teach-card:focus-visible {outline:3px solid #74b9b0;outline-offset:3px;}
+    .teach-eyebrow {font:.74rem/1.2 system-ui,sans-serif;color:#468380;font-weight:780;letter-spacing:.09em;text-transform:uppercase;}
+    .teach-name {font:500 1.31rem/1.35 Georgia,serif;color:#244054;}
+    .teach-description {font:.91rem/1.65 system-ui,sans-serif;color:#526875;flex:1;}
+    .teach-open {border-top:1px solid #e6eeee;width:100%;padding-top:12px;margin-top:3px;font:.80rem/1.4 system-ui,sans-serif;color:#277c7d;font-weight:720;display:flex;justify-content:space-between;}
+    .teach-section {margin-bottom:54px;}
+    .teach-divider {height:1px;background:#dde7e8;border:0;margin:48px 0 42px;}
+    .teach-pill-row {display:flex;gap:9px;flex-wrap:wrap;margin-top:13px;}
+    .teach-pill-row a {border:1px solid #c6dcdb;background:#f1f8f7;border-radius:999px;padding:7px 13px;color:#296b71;text-decoration:none;font:.82rem/1.25 system-ui,sans-serif;font-weight:730;}
+    .teach-pill-row a:hover {background:#dceeed;}
+    .teach-minor {font:.83rem/1.55 system-ui,sans-serif;color:#6b7e88;margin-top:14px;}
+    .teach-toolbar {margin-top:0;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
+    .teach-toolbar a {font-size:.86rem;color:#287580;}
+    @media(max-width:760px){.teach-grid{grid-template-columns:1fr}.teaching-hub{padding:36px 0 58px}.teach-card{padding:21px}.teach-section{margin-bottom:40px}.teach-divider{margin:36px 0}}
+    @media(prefers-reduced-motion:reduce){.teach-card{transition:none}.teach-card:hover{transform:none}}
+  </style>
+</head>
+<body class="course-page">
+<header class="topbar"><div class="container topbar-inner"><a class="brand" href="../index.html">Stéphane Chrétien<span class="dot">.</span></a><nav class="nav" aria-label="Navigation principale"><a href="../index.html#recherche">Recherche</a><a href="index.html" aria-current="page">Enseignements</a><a href="../index.html#publications">Publications</a><a href="../index.html#contact">Contact</a></nav></div></header>
+<main>
+<section class="course-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Accueil</a> <span aria-hidden="true">›</span> <span>Enseignements</span></div><div class="eyebrow">Enseignements · Université Lumière Lyon 2</div><h1>Enseignements</h1><p class="subtitle">Cours, travaux dirigés et ressources pédagogiques, classés par formation et par niveau.</p></div></section>
+<div class="container teaching-hub">
+  <section id="miashs" class="teach-section" aria-labelledby="miashs-title">
+    <h2 id="miashs-title">Licence et Master MIASHS</h2>
+    <p class="section-intro">Les enseignements MIASHS sont organisés par année, puis par unité d'enseignement.</p>
+    <div class="teach-grid">
+      <article class="teach-card">
+        <span class="teach-eyebrow">Licence MIASHS</span>
+        <a class="teach-name" href="licence/miashs/index.html">Licence 1, 2 et 3 ↗</a>
+        <span class="teach-description">Probabilités, statistique descriptive, modélisation linéaire et statistique inférentielle.</span>
+        <div class="teach-pill-row" aria-label="Accès direct par année de licence"><a href="licence/miashs/l1/index.html">L1</a><a href="licence/miashs/l2/index.html">L2</a><a href="licence/miashs/l3/index.html">L3</a></div>
+      </article>
+      <article class="teach-card">
+        <span class="teach-eyebrow">Master MIASHS</span>
+        <a class="teach-name" href="master/miashs/index.html">Master 1 et 2 ↗</a>
+        <span class="teach-description">Machine learning, NLP, méthodes robustes, optimisation, apprentissage en ligne et par renforcement.</span>
+        <div class="teach-pill-row" aria-label="Accès direct par année de master"><a href="master/miashs/m1/index.html">M1</a><a href="master/miashs/m2/index.html">M2</a></div>
+      </article>
+    </div>
+  </section>
+
+  <hr class="teach-divider">
+
+  <section id="autres" class="teach-section" aria-labelledby="autres-title">
+    <div class="group-heading"><h2 id="autres-title">Autres enseignements et formations</h2><a href="autres/index.html">Sommaire de toutes les autres formations ↗</a></div>
+    <p class="section-intro">Accès direct aux cours proposés en dehors des parcours MIASHS.</p>
+    <div class="teach-grid">
+      <a class="teach-card" href="autres/polytechnique-lyon/modelisation-statistique/index.html">
+        <span class="teach-eyebrow">Polytechnique Lyon</span><span class="teach-name">Modélisation statistique</span><span class="teach-description">Cours et applications : polycopié, TD, TP et ressources complémentaires.</span><span class="teach-open">Voir le cours <span aria-hidden="true">↗</span></span>
+      </a>
+      <a class="teach-card" href="autres/master-idsm/ia/index.html">
+        <span class="teach-eyebrow">Master IDSM · Kharkiv–Lyon 2</span><span class="teach-name">Intelligence artificielle</span><span class="teach-description">Réseaux de neurones, chaînes de Markov, Transformers et notebooks.</span><span class="teach-open">Voir le cours <span aria-hidden="true">↗</span></span>
+      </a>
+      <a class="teach-card" href="autres/licence-sciences-de-la-vie/biostatistiques/index.html">
+        <span class="teach-eyebrow">Licence Sciences de la Vie · L2</span><span class="teach-name">Biostatistiques</span><span class="teach-description">Fondamentaux statistiques et travaux dirigés pour les sciences de la vie.</span><span class="teach-open">Voir le cours <span aria-hidden="true">↗</span></span>
+      </a>
+      <a class="teach-card" href="autres/master-data-science/deep-learning/index.html">
+        <span class="teach-eyebrow">Master Data Science</span><span class="teach-name">Deep Learning</span><span class="teach-description">Réseaux de neurones, CNN, RNN, Transformers et projets appliqués.</span><span class="teach-open">Voir le cours <span aria-hidden="true">↗</span></span>
+      </a>
+      <a class="teach-card" href="autres/master-seg-ees/index.html">
+        <span class="teach-eyebrow">Master 2 SEG EES</span><span class="teach-name">Machine Learning et programme</span><span class="teach-description">Présentation des enseignements et introduction à l'apprentissage statistique.</span><span class="teach-open">Voir la formation <span aria-hidden="true">↗</span></span>
+      </a>
+      <a class="teach-card" href="autres/master-geographie-environnement/index.html">
+        <span class="teach-eyebrow">Master Géographie-Environnement</span><span class="teach-name">Statistical Machine Learning</span><span class="teach-description">Apprentissage statistique et applications aux données géographiques.</span><span class="teach-open">Voir la formation <span aria-hidden="true">↗</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section id="transversaux" aria-labelledby="transversaux-title" class="teach-section">
+    <h2 id="transversaux-title">Cours transversaux et ressources logicielles</h2>
+    <p class="section-intro">Supports complémentaires en programmation, méthodes d'analyse et apprentissage statistique.</p>
+    <div class="teach-grid">
+      <a class="teach-card" href="autres/applied-machine-learning/index.html">
+        <span class="teach-eyebrow">Machine Learning</span><span class="teach-name">Applied Machine Learning</span><span class="teach-description">Python, régression, classification, clustering, noyaux, SVM et pipelines.</span><span class="teach-open">Voir les ressources <span aria-hidden="true">↗</span></span>
+      </a>
+      <a class="teach-card" href="autres/outils-r/index.html">
+        <span class="teach-eyebrow">Statistique et logiciels</span><span class="teach-name">R, Posit et travaux pratiques</span><span class="teach-description">Prise en main de R, statistiques pour la sociologie, exercices et TP.</span><span class="teach-open">Voir les ressources <span aria-hidden="true">↗</span></span>
+      </a>
+    </div>
+  </section>
+  <div class="teach-toolbar"><a href="../index.html">← Retour à l'accueil</a><a href="#miashs">↑ Haut de la page</a></div>
+</div>
+</main>
+<footer class="footer"><div class="container"><div class="bottom"><span>© 2026 Stéphane Chrétien · Université Lumière Lyon 2</span><span>Pages de cours hébergées sur GitHub Pages</span></div></div></footer>
+</body>
+</html>
