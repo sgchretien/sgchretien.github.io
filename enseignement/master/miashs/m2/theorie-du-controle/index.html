@@ -1,1 +1,168 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Théorie du contrôle, Master 2 MIASHS : équations différentielles, systèmes linéaires, contrôlabilité, Gramien et contrôle à énergie minimale. Supports de cours en PDF.">
+  <title>Théorie du contrôle — Master 2 MIASHS · Stéphane Chrétien</title>
+  <link rel="stylesheet" href="../../../../../assets/site.css">
+  <style>
+    /* Compléments locaux : les règles générales proviennent de assets/site.css. */
+    .control-page .course-main { min-width: 0; }
+    .control-page .course-main > h2 { scroll-margin-top: 5rem; }
+    .control-lead { font-size: 1.06rem; line-height: 1.75; }
+    .control-highlight { margin: 1.5rem 0 2rem; padding: 1rem 1.2rem;
+      border-left: 4px solid #347969; background: #f3f8f6; border-radius: 0 10px 10px 0; }
+    .control-highlight p { margin: 0; }
+    .control-outline { counter-reset: control; display: grid; grid-template-columns: 1fr;
+      gap: .8rem; padding: 0; margin: 1rem 0 1.8rem; list-style: none; }
+    .control-outline li { position: relative; padding: .85rem 1rem .85rem 3.3rem;
+      border: 1px solid #e3e9e7; border-radius: 10px; background: #fff; line-height: 1.55; }
+    .control-outline li::before { counter-increment: control; content: counter(control, decimal-leading-zero);
+      position: absolute; left: 1rem; top: .9rem; font-weight: 700; color: #39796b; }
+    .control-outline strong { display: block; font-weight: 650; }
+    .control-outline .detail { color: #576663; font-size: .94rem; }
+    .control-concepts { display: flex; gap: .5rem; flex-wrap: wrap; margin: 1rem 0 1.8rem; }
+    .control-concepts span { display: inline-block; padding: .38rem .72rem;
+      color: #315f56; background: #eff7f4; border-radius: 100px; font-size: .9rem; }
+    .control-resource { border: 1px solid #dce7e2; border-radius: 14px;
+      padding: 1.2rem 1.4rem; background: #f8fbf9; margin: 1.15rem 0; }
+    .control-resource strong { display: block; font-size: 1.1rem; }
+    .control-resource .resource-meta { color: #52665e; margin: .35rem 0 1rem; font-size: .94rem; }
+    .control-actions { display: flex; gap: .7rem; flex-wrap: wrap; align-items: center; }
+    .control-actions a { display: inline-flex; align-items: center; justify-content: center;
+      padding: .68rem 1rem; border-radius: 8px; font-weight: 650;
+      text-decoration: none; border: 1px solid #39796b; }
+    .control-actions a:first-child { color: white; background: #326f62; }
+    .control-actions a:last-child { color: #326f62; background: white; }
+    .control-actions a:hover, .control-actions a:focus-visible { filter: brightness(.95); text-decoration: underline; }
+    .control-pdf { margin: 1.2rem 0 2rem; }
+    .control-pdf iframe { display: block; width: 100%; height: min(76vh, 760px); min-height: 410px;
+      border: 1px solid #dce7e2; border-radius: 9px; background: #f2f5f4; }
+    .control-pdf figcaption { margin-top: .6rem; color: #58655f; font-size: .89rem; }
+    .control-formula { overflow-x: auto; padding: .9rem 1rem; border-radius: 9px;
+      background: #f6f8f8; font-size: 1.04rem; font-family: Georgia, "Times New Roman", serif; }
+    .control-aside-link { display: block; margin: .45rem 0; }
+    @media (max-width: 720px) {
+      .control-resource { padding: 1rem; }
+      .control-actions a { width: 100%; }
+      .control-pdf iframe { height: 65vh; min-height: 340px; }
+    }
+    @media (prefers-color-scheme: dark) {
+      .control-highlight, .control-resource, .control-outline li, .control-formula {
+        color: inherit; background: rgba(88, 145, 125, .10); }
+      .control-outline .detail, .control-resource .resource-meta, .control-pdf figcaption { color: inherit; }
+      .control-concepts span { color: inherit; background: rgba(88, 145, 125, .16); }
+    }
+  </style>
+</head>
+<body class="course-page control-page">
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="../../../../../index.html">Stéphane Chrétien<span class="dot">.</span></a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="../../../../../index.html#recherche">Recherche</a>
+        <a href="../../../../index.html">Enseignements</a>
+        <a href="../../../../../index.html#publications">Publications</a>
+        <a href="../../../../../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
+  <main>
+    <section class="course-hero">
+      <div class="container">
+        <div class="breadcrumbs" aria-label="Fil d’Ariane">
+          <a href="../../../../../index.html">Accueil</a>
+          <span aria-hidden="true">›</span>
+          <a href="../../../../index.html">Enseignements</a>
+          <span aria-hidden="true">›</span>
+          <a href="../../index.html">Master MIASHS</a>
+          <span aria-hidden="true">›</span>
+          <a href="../index.html">Master 2 MIASHS</a>
+          <span aria-hidden="true">›</span>
+          <span aria-current="page">Théorie du contrôle</span>
+        </div>
+        <div class="eyebrow">Master 2 MIASHS · Université Lumière Lyon 2</div>
+        <h1>Théorie du contrôle</h1>
+        <p class="subtitle">Des équations différentielles au contrôle d’énergie minimale — une introduction par les modèles, les exemples et le Gramien.</p>
+      </div>
+    </section>
+
+    <div class="container course-layout">
+      <article class="course-main">
+        <h2 id="presentation">Présentation du cours</h2>
+        <p class="control-lead">Ce cours introduit la théorie du contrôle des systèmes linéaires en temps continu. Il part des équations différentielles ordinaires, étudie les systèmes dynamiques à plusieurs variables, puis cherche à déterminer les actions qui permettent d’atteindre un état cible en dépensant le moins d’énergie possible.</p>
+        <div class="control-highlight">
+          <p><strong>Fil conducteur :</strong> comprendre une dynamique, agir sur elle, puis choisir l’action la moins coûteuse.</p>
+        </div>
+
+        <h2 id="programme">Plan du cours</h2>
+        <ol class="control-outline">
+          <li><strong>Une variable : comprendre la dynamique</strong><span class="detail">Équations différentielles scalaires, solutions explicites, stabilité, réponse à une sollicitation.</span></li>
+          <li><strong>Plusieurs variables : systèmes linéaires</strong><span class="detail">Représentation d’état, exponentielle de matrice, systèmes couplés, oscillations et stabilité.</span></li>
+          <li><strong>Introduire l’action : les systèmes contrôlés</strong><span class="detail">Modèle d’état ẋ = Ax + Bu, entrée de commande, double intégrateur et systèmes dissipatifs.</span></li>
+          <li><strong>Contrôlabilité</strong><span class="detail">Accessibilité d’un état cible, choix des directions d’action, critère de Kalman.</span></li>
+          <li><strong>Solution explicite du système contrôlé</strong><span class="detail">Variation des constantes, réponse libre et réponse forcée, opérateur de commande.</span></li>
+          <li><strong>Le contrôle à énergie minimale</strong><span class="detail">Optimisation quadratique sous contrainte, adjoint, Gramien de contrôlabilité et commande optimale.</span></li>
+        </ol>
+
+        <h2 id="notions">Notions essentielles</h2>
+        <p>Le modèle linéaire étudié s’écrit :</p>
+        <p class="control-formula"><span role="math" aria-label="x point de t égale A x de t plus B u de t">ẋ(t) = Ax(t) + Bu(t)</span>.</p>
+        <p>L’objectif est d’atteindre une cible à un horizon fixé tout en minimisant une énergie quadratique de la commande. Le cours établit la formule de solution, construit le Gramien de contrôlabilité et en déduit le contrôle d’énergie minimale lorsque ce Gramien est inversible.</p>
+        <div class="control-concepts" aria-label="Mots-clés du cours">
+          <span>Équations différentielles</span><span>Exponentielle de matrice</span><span>Stabilité</span><span>Contrôlabilité</span><span>Critère de Kalman</span><span>Gramien</span><span>Optimisation quadratique</span>
+        </div>
+
+        <h2 id="applications">Exemples et applications</h2>
+        <p>Les résultats mathématiques sont illustrés par des systèmes physiques — concentration d’un médicament, chauffage d’une pièce, masse–ressort, véhicule et double intégrateur — ainsi que par des modèles de sciences humaines et sociales : diffusion de l’information entre groupes, politiques de transport et d’emploi, mobilisation associative et accès aux droits sociaux.</p>
+
+        <h2 id="supports">Support de cours</h2>
+        <div class="control-resource">
+          <strong>Des équations différentielles au contrôle d’énergie minimale</strong>
+          <p class="resource-meta">Stéphane Chrétien · Master MIASHS — M2 · Diaporama PDF · 66 pages</p>
+          <div class="control-actions">
+            <a href="introduction_to_control_theory_slides.pdf" target="_blank" rel="noopener noreferrer">Ouvrir le cours (PDF)</a>
+            <a href="introduction_to_control_theory_slides.pdf" download="introduction_to_control_theory_slides.pdf">Télécharger le PDF</a>
+          </div>
+        </div>
+        <figure class="control-pdf">
+          <iframe src="introduction_to_control_theory_slides.pdf#page=1&view=FitH" title="Lecture intégrée du support de théorie du contrôle, au format PDF" loading="lazy">
+            Votre navigateur ne peut pas afficher le PDF intégré. <a href="introduction_to_control_theory_slides.pdf">Ouvrir le document directement</a>.
+          </iframe>
+          <figcaption>Visualisation du diaporama sur cette page. Sur certains appareils, utilisez le lien « Ouvrir le cours (PDF) » pour consulter le document.</figcaption>
+        </figure>
+      </article>
+
+      <aside class="course-aside">
+        <div class="aside-card">
+          <h3>Navigation</h3>
+          <a href="../../../../index.html">← Tous les enseignements</a>
+          <a href="../index.html">↑ Master 2 MIASHS</a>
+          <div class="toc">
+            <h3>Sur cette page</h3>
+            <a href="#presentation">Présentation</a>
+            <a href="#programme">Plan du cours</a>
+            <a href="#notions">Notions essentielles</a>
+            <a href="#applications">Applications</a>
+            <a href="#supports">Support PDF</a>
+          </div>
+          <div class="toc">
+            <h3>Autres cours du M2</h3>
+            <a href="../optimisation/index.html">Optimisation</a>
+            <a href="../reinforcement-learning/index.html">Reinforcement Learning</a>
+            <a href="../online-learning/index.html">Online Learning</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container"><div class="bottom">
+      <span>© 2026 Stéphane Chrétien · Université Lumière Lyon 2</span>
+      <span>Pages de cours hébergées sur GitHub Pages</span>
+    </div></div>
+  </footer>
+</body>
+</html>
