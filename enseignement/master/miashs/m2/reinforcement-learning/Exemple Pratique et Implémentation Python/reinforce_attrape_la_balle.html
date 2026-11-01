@@ -245,12 +245,12 @@
 <h1 id="reinforce-pas-à-pas-sur-un-petit-jeu-attrape-la-balle">REINFORCE
 pas à pas sur un petit jeu : « Attrape la balle »</h1>
 <p><a
-href="https://colab.research.google.com/drive/1rVae1nFMB8o5Iwsk19a7x2nkU9QhBRg2?usp=sharing"><img
+href="https://colab.research.google.com/drive/1b5xPu8F5hayQVzqt3PPs2AidZKrO0kl1?usp=sharing"><img
 src="https://colab.research.google.com/assets/colab-badge.svg"
 alt="Ouvrir dans Colab" /></a></p>
 <p><strong>Pour travailler sur ce notebook</strong>, ouvrez-le dans
 Google Colab <a
-href="https://colab.research.google.com/drive/1rVae1nFMB8o5Iwsk19a7x2nkU9QhBRg2?usp=sharing">avec
+href="https://colab.research.google.com/drive/1b5xPu8F5hayQVzqt3PPs2AidZKrO0kl1?usp=sharing">avec
 ce lien</a> : un compte Google suffit, il n’y a rien à installer.
 Choisissez d’abord <em>Fichier › Enregistrer une copie dans Drive</em>
 pour disposer de votre propre copie, que vous pourrez modifier, puis
@@ -633,11 +633,10 @@ G_0(\tau)\, P_\theta(\tau)\, \nabla_\theta \log P_\theta(\tau) =
 \sum_{t} \log \pi_\theta(a_t \mid s_t) + \sum_t \log p(s_{t+1} \mid s_t,
 a_t),\]</span> et seule la somme du milieu dépend de <span
 class="math inline">\(\theta\)</span> : <strong>on n’a pas besoin de
-connaître la dynamique du jeu</strong>. En notant <span
-class="math inline">\(\psi_t = \nabla_\theta \log \pi_\theta(a_t \mid
-s_t)\)</span>, on obtient <span class="math display">\[\nabla_\theta
+connaître la dynamique du jeu</strong>. On obtient ainsi <span class="math display">\[\nabla_\theta
 J(\theta) = \sum_{t=0}^{T-1} \mathbb{E}\big[G_0\,
-\psi_t\big].\]</span></p>
+\nabla_\theta \log \pi_\theta(a_t \mid
+s_t)\big].\]</span></p>
 <p><strong>Remplacer <span class="math inline">\(G_0\)</span> par <span
 class="math inline">\(G_t\)</span>.</strong> L’idée est qu’une action ne
 peut pas influencer les récompenses déjà reçues ; voici l’argument
