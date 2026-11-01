@@ -592,36 +592,103 @@ différences finies    : [-0.290204 -0.224248  0.514452]
 écart maximal         : 1.1e-10
 somme des composantes : -1.1e-16</code></pre>
 <h2 id="lalgorithme-reinforce">3. L’algorithme REINFORCE</h2>
-<p><strong>Objectif.</strong> On veut maximiser le retour moyen <span
-class="math inline">\(J(\theta) = \mathbb{E}_{\tau \sim
-\pi_\theta}[G_0]\)</span>, où <span class="math inline">\(\tau = (s_0,
-a_0, r_1, \dots, s_{T-1}, a_{T-1}, r_T)\)</span> est une partie et <span
-class="math inline">\(G_t = \sum_{k=t+1}^{T} \gamma^{k-t-1} r_k\)</span>
-le retour à partir du pas <span class="math inline">\(t\)</span>.</p>
-<p><strong>Astuce de la log-dérivée.</strong> On a <span
-class="math inline">\(\nabla_\theta \mathbb{E}_{\tau}[G_0] =
-\mathbb{E}_{\tau}\big[G_0\, \nabla_\theta \log
-P_\theta(\tau)\big]\)</span>. Or <span class="math display">\[\log
-P_\theta(\tau) = \log p(s_0) + \sum_{t} \log \pi_\theta(a_t \mid s_t) +
-\sum_t \log p(s_{t+1} \mid s_t, a_t),\]</span> et seule la somme du
-milieu dépend de <span class="math inline">\(\theta\)</span> :
-<strong>on n’a pas besoin de connaître la dynamique du jeu</strong>.
-Enfin, une action ne peut pas influencer les récompenses déjà reçues, ce
-qui permet de remplacer <span class="math inline">\(G_0\)</span> par
-<span class="math inline">\(G_t\)</span> : <span
-class="math display">\[\nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim
-\pi_\theta}\Big[\sum_{t=0}^{T-1} G_t \, \nabla_\theta \log
-\pi_\theta(a_t \mid s_t)\Big].\]</span></p>
+<p><strong>Objectif.</strong> Une partie est une trajectoire <span
+class="math inline">\(\tau = (s_0, a_0, r_1, \dots, s_{T-1}, a_{T-1},
+r_T)\)</span>, et <span class="math inline">\(G_t = \sum_{k=t+1}^{T}
+\gamma^{k-t-1} r_k\)</span> est le retour à partir du pas <span
+class="math inline">\(t\)</span>. La loi de <span
+class="math inline">\(\tau\)</span> dépend de trois ingrédients : la loi
+initiale <span class="math inline">\(\mu\)</span> de <span
+class="math inline">\(s_0\)</span> (ici, la colonne de départ de la
+balle, uniforme), la politique <span
+class="math inline">\(\pi_\theta\)</span> et la dynamique <span
+class="math inline">\(p(s&#39; \mid s, a)\)</span> du jeu : <span
+class="math display">\[P_\theta(\tau) = \mu(s_0) \prod_{t=0}^{T-1}
+\pi_\theta(a_t \mid s_t)\; p(s_{t+1} \mid s_t, a_t).\]</span> Dans ce
+jeu, la récompense <span class="math inline">\(r_{t+1}\)</span> est une
+fonction déterministe de <span class="math inline">\((s_t, a_t,
+s_{t+1})\)</span> et n’ajoute rien à cette loi. On veut maximiser le
+retour moyen <span class="math display">\[J(\theta) = \mathbb{E}_{\tau
+\sim P_\theta}[G_0].\]</span></p>
+<p><em>Sur les notations.</em> On trouve souvent <span
+class="math inline">\(\mathbb{E}_{\tau \sim \pi_\theta}\)</span> dans la
+littérature. C’est un abus : <span
+class="math inline">\(\pi_\theta\)</span> est une loi sur les actions,
+conditionnelle à l’état, et non une loi sur les trajectoires. Il est
+toléré parce que, <span class="math inline">\(\mu\)</span> et <span
+class="math inline">\(p\)</span> étant fixés, seule la politique dépend
+de <span class="math inline">\(\theta\)</span>.</p>
+<p>Dans la suite, <span class="math inline">\(\mathbb{E}\)</span> sans
+indice désigne l’espérance sous <span
+class="math inline">\(P_\theta\)</span>.</p>
+<p><strong>Astuce de la log-dérivée.</strong> Les trajectoires sont en
+nombre fini, on peut donc dériver sous la somme, qui porte sur les
+trajectoires de probabilité non nulle (la softmax donne <span
+class="math inline">\(\pi_\theta &gt; 0\)</span>, les logarithmes sont
+bien définis) : <span class="math display">\[\nabla_\theta J(\theta) =
+\sum_\tau G_0(\tau)\, \nabla_\theta P_\theta(\tau) = \sum_\tau
+G_0(\tau)\, P_\theta(\tau)\, \nabla_\theta \log P_\theta(\tau) =
+\mathbb{E}\big[G_0\, \nabla_\theta \log P_\theta(\tau)\big].\]</span> Or
+<span class="math display">\[\log P_\theta(\tau) = \log \mu(s_0) +
+\sum_{t} \log \pi_\theta(a_t \mid s_t) + \sum_t \log p(s_{t+1} \mid s_t,
+a_t),\]</span> et seule la somme du milieu dépend de <span
+class="math inline">\(\theta\)</span> : <strong>on n’a pas besoin de
+connaître la dynamique du jeu</strong>. En notant <span
+class="math inline">\(\psi_t = \nabla_\theta \log \pi_\theta(a_t \mid
+s_t)\)</span>, on obtient <span class="math display">\[\nabla_\theta
+J(\theta) = \sum_{t=0}^{T-1} \mathbb{E}\big[G_0\,
+\psi_t\big].\]</span></p>
+<p><strong>Remplacer <span class="math inline">\(G_0\)</span> par <span
+class="math inline">\(G_t\)</span>.</strong> L’idée est qu’une action ne
+peut pas influencer les récompenses déjà reçues ; voici l’argument
+précis. Notons <span class="math inline">\(h_t = (s_0, a_0, s_1, \dots,
+a_{t-1}, s_t)\)</span> l’historique jusqu’à l’instant <span
+class="math inline">\(t\)</span>, avant le choix de <span
+class="math inline">\(a_t\)</span>.</p>
+<p><em>Lemme.</em> Sachant <span class="math inline">\(h_t\)</span>,
+l’action <span class="math inline">\(a_t\)</span> suit la loi <span
+class="math inline">\(\pi_\theta(\cdot \mid s_t)\)</span> ; c’est la
+définition même de <span class="math inline">\(P_\theta\)</span>. Donc
+<span class="math display">\[\mathbb{E}\big[\psi_t \mid h_t\big] =
+\sum_a \pi_\theta(a \mid s_t)\, \nabla_\theta \log \pi_\theta(a \mid
+s_t) = \sum_a \nabla_\theta \pi_\theta(a \mid s_t) = \nabla_\theta
+\sum_a \pi_\theta(a \mid s_t) = \nabla_\theta 1 = 0,\]</span> et pour
+toute variable <span class="math inline">\(X\)</span> fonction de <span
+class="math inline">\(h_t\)</span> seulement, <span
+class="math inline">\(\mathbb{E}[X\, \psi_t] = \mathbb{E}\big[X\,
+\mathbb{E}[\psi_t \mid h_t]\big] = 0\)</span>.</p>
+<p><em>Application.</em> Coupons le retour au pas <span
+class="math inline">\(t\)</span> : <span class="math display">\[G_0 =
+\underbrace{\sum_{k=1}^{t} \gamma^{k-1} r_k}_{A_t \;:\;
+\text{récompenses passées}} + \gamma^t\, G_t.\]</span> Comme <span
+class="math inline">\(r_k\)</span> ne dépend que de <span
+class="math inline">\((s_{k-1}, a_{k-1}, s_k)\)</span>, la partie passée
+<span class="math inline">\(A_t\)</span> est une fonction de <span
+class="math inline">\(h_t\)</span>, donc <span
+class="math inline">\(\mathbb{E}[A_t\, \psi_t] = 0\)</span> par le
+lemme. Il reste <span class="math inline">\(\mathbb{E}[G_0\, \psi_t] =
+\gamma^t\, \mathbb{E}[G_t\, \psi_t]\)</span> pour chaque <span
+class="math inline">\(t\)</span>, et finalement <span
+class="math display">\[\nabla_\theta J(\theta) =
+\mathbb{E}\Big[\sum_{t=0}^{T-1} \gamma^t\, G_t \, \nabla_\theta \log
+\pi_\theta(a_t \mid s_t)\Big].\]</span> Retirer <span
+class="math inline">\(A_t\)</span> ne change pas l’espérance mais
+supprime un terme qui n’apporte que du bruit : c’est déjà une réduction
+de variance. Ce n’est pas une factorisation de <span
+class="math inline">\(G_0\)</span> : chaque terme <span
+class="math inline">\(\psi_t\)</span> garde sa propre part du
+retour.</p>
 <p><strong>Estimation Monte-Carlo.</strong> On joue une partie avec la
 politique courante : la somme entre crochets, calculée sur cette partie,
-est un estimateur sans biais du gradient. On fait un pas de montée de
-gradient et on recommence.</p>
-<p><strong>Baseline.</strong> Pour toute fonction <span
-class="math inline">\(b(s)\)</span> qui ne dépend pas de l’action, <span
-class="math display">\[\mathbb{E}_{a \sim \pi(\cdot \mid
-s)}\big[b(s)\,\nabla \log \pi(a \mid s)\big] = b(s) \sum_a \nabla \pi(a
-\mid s) = b(s)\,\nabla \sum_a \pi(a \mid s) = b(s)\,\nabla 1 =
-0.\]</span> Remplacer <span class="math inline">\(G_t\)</span> par <span
+est un estimateur sans biais de <span
+class="math inline">\(\nabla_\theta J(\theta)\)</span>. On fait un pas
+de montée de gradient et on recommence.</p>
+<p><strong>Baseline.</strong> Le même lemme s’applique à toute fonction
+<span class="math inline">\(b\)</span> de l’état : <span
+class="math inline">\(b(s_t)\)</span> est une fonction de <span
+class="math inline">\(h_t\)</span>, donc <span
+class="math inline">\(\mathbb{E}\big[b(s_t)\, \psi_t\big] = 0\)</span>.
+Remplacer <span class="math inline">\(G_t\)</span> par <span
 class="math inline">\(G_t - b(s_t)\)</span> ne change donc pas
 l’espérance, mais peut réduire fortement la variance (section 7). Le
 choix naturel est <span class="math inline">\(b(s) \approx
@@ -634,11 +701,21 @@ V^\pi(s)\)</span>, que l’on apprend lui aussi par Monte-Carlo.</p>
         δ      ← G_t − b(s_t)                     (δ = G_t sans baseline)
         b(s_t) ← b(s_t) + α_v · δ
         θ[s_t] ← θ[s_t] + α · δ · (onehot(a_t) − π_θ(·|s_t))</code></pre>
-<p><em>Remarque.</em> La version de Sutton &amp; Barto (§13.3) multiplie
-aussi la mise à jour par <span class="math inline">\(\gamma^t\)</span>.
-La plupart des implémentations l’omettent et on fait de même ; avec
-<span class="math inline">\(\gamma = 0{,}99\)</span> et des parties de 6
-pas, cela ne change presque rien.</p>
+<p><em>Remarque sur le facteur <span
+class="math inline">\(\gamma^t\)</span>.</em> La version de Sutton &amp;
+Barto (§13.3) garde le facteur <span
+class="math inline">\(\gamma^t\)</span> de la formule exacte. Le code de
+ce notebook l’omet, comme la plupart des implémentations : il suit la
+direction <span class="math display">\[g(\theta) = \mathbb{E}_{\tau \sim
+P_\theta}\Big[\sum_{t=0}^{T-1} G_t \, \nabla_\theta \log \pi_\theta(a_t
+\mid s_t)\Big],\]</span> qui coïncide avec <span
+class="math inline">\(\nabla_\theta J(\theta)\)</span> lorsque <span
+class="math inline">\(\gamma = 1\)</span>, mais pas lorsque <span
+class="math inline">\(\gamma &lt; 1\)</span> : Nota et Thomas (2020)
+montrent même qu’elle n’est alors en général le gradient d’aucune
+fonction. Ici, avec <span class="math inline">\(\gamma = 0{,}99\)</span>
+et des parties de 6 pas, <span class="math inline">\(\gamma^t \geq
+0{,}95\)</span> et l’écart est négligeable.</p>
 <p>Calculons les retours de la partie au hasard de la section 1 :</p>
 <div class="sourceCode" id="cb13"><pre
 class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> retours(recompenses, gamma):                       <span class="co"># calcule tous les retours G_t d&#39;une partie</span></span>
@@ -759,7 +836,7 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a h
 <span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="st">&quot;lower right&quot;</span>)                           <span class="co"># légende en bas à droite, où la courbe ne passe pas</span></span>
 <span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">&quot;Apprentissage de REINFORCE (une graine)&quot;</span>)  <span class="co"># titre</span></span>
 <span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>plt.show()                                             <span class="co"># affichage</span></span></code></pre></div>
-<pre class="output"><code>3000 parties jouées en 1.0 s
+<pre class="output"><code>3000 parties jouées en 0.7 s
 Réussite pendant les 100 dernières parties d&#39;entraînement : 100%
 Politique finale, stochastique : 99.2%
 Politique finale, gloutonne    : 100.0%</code></pre>
@@ -1008,25 +1085,28 @@ beaucoup.</li>
 <p>Ajouter une constante <span class="math inline">\(c\)</span> à la
 récompense finale ne change ni le jeu, ni la politique optimale, ni le
 gradient <span class="math inline">\(\nabla J\)</span>, puisque <span
-class="math inline">\(\mathbb{E}[\nabla \log \pi] = 0\)</span>. Mais
-cela change énormément la <strong>variance</strong> de l’estimateur sans
-baseline. Avec des récompenses <span
-class="math inline">\(+11/+9\)</span> au lieu de <span
+class="math inline">\(\mathbb{E}_{a \sim \pi(\cdot \mid s)}[\nabla \log
+\pi(a \mid s)] = 0\)</span>. Mais cela change énormément la
+<strong>variance</strong> de l’estimateur sans baseline. Avec des
+récompenses <span class="math inline">\(+11/+9\)</span> au lieu de <span
 class="math inline">\(+1/-1\)</span>, chaque partie, gagnée ou perdue,
 pousse à rejouer <em>toutes</em> les actions qu’on vient de jouer ;
 seule la petite différence entre 11 et 9 porte l’information utile.</p>
 <h3 id="mesure-directe-de-la-variance">7.1 Mesure directe de la
 variance</h3>
-<p>On fixe la politique uniforme et on estime la dérivée de <span
-class="math inline">\(J\)</span> dans la direction <span
-class="math inline">\(d\)</span> « aller vers la balle » : dans chaque
-état, <span class="math inline">\(d\)</span> augmente la préférence de
-l’action qui rapproche la raquette de la balle. Chaque partie fournit
-une estimation <span class="math inline">\(\hat g \cdot d\)</span>. Pour
-la politique uniforme, elle vaut <span class="math inline">\(\sum_t (G_t
-- b_t)\,\big(\mathbf{1}\{a_t \text{ rapproche}\} -
-\tfrac13\big)\)</span> : c’est une corrélation entre le retour et le
-nombre de « bons » mouvements.</p>
+<p>On fixe la politique uniforme et on estime la dérivée dans la
+direction <span class="math inline">\(d\)</span> « aller vers la balle »
+de la quantité <span class="math inline">\(g(\theta)\)</span> suivie par
+le code, c’est-à-dire, au facteur <span
+class="math inline">\(\gamma^t\)</span> près, la dérivée de <span
+class="math inline">\(J\)</span> (section 3) : dans chaque état, <span
+class="math inline">\(d\)</span> augmente la préférence de l’action qui
+rapproche la raquette de la balle. Chaque partie fournit une estimation
+<span class="math inline">\(\hat g \cdot d\)</span>. Pour la politique
+uniforme, elle vaut <span class="math inline">\(\sum_t (G_t -
+b_t)\,\big(\mathbf{1}\{a_t \text{ rapproche}\} - \tfrac13\big)\)</span>
+: c’est une corrélation entre le retour et le nombre de « bons »
+mouvements.</p>
 <p>On compare quatre estimateurs : récompenses <span
 class="math inline">\(\pm 1\)</span> ou <span
 class="math inline">\(+11/+9\)</span>, sans baseline ou avec une
@@ -1145,7 +1225,7 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a h
 <span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a>ax.legend(fontsize<span class="op">=</span><span class="dv">8</span>, loc<span class="op">=</span><span class="st">&quot;upper left&quot;</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">1.01</span>, <span class="dv">1</span>))  <span class="co"># légende à droite, hors du graphique</span></span>
 <span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">&quot;Effet de la baseline et d&#39;un décalage des récompenses&quot;</span>)  <span class="co"># titre</span></span>
 <span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>plt.show()                                             <span class="co"># affichage</span></span></code></pre></div>
-<pre class="output"><code>20 entraînements en 22 s
+<pre class="output"><code>20 entraînements en 21 s
 
 sans baseline, récompenses +1/−1         réussite finale : 99.1%   (par graine : 99%, 99%, 99%, 99%, 99%)
 avec baseline, récompenses +1/−1         réussite finale : 99.0%   (par graine : 99%, 99%, 99%, 99%, 99%)
@@ -1222,6 +1302,8 @@ et §13.4 (REINFORCE avec baseline).</li>
 <li>J. Mei, C. Xiao, Cs. Szepesvári et D. Schuurmans (2020). <em>On the
 global convergence rates of softmax policy gradient methods</em>.
 ICML.</li>
+<li>C. Nota et P. S. Thomas (2020). <em>Is the policy gradient a
+gradient?</em> AAMAS 2020 (arXiv:1906.07073).</li>
 </ul>
 </body>
 </html>
