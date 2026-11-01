@@ -648,7 +648,8 @@ class="math inline">\(a_t\)</span>.</p>
 l’action <span class="math inline">\(a_t\)</span> suit la loi <span
 class="math inline">\(\pi_\theta(\cdot \mid s_t)\)</span> ; c’est la
 définition même de <span class="math inline">\(P_\theta\)</span>. Donc
-<span class="math display">\[\mathbb{E}\big[\psi_t \mid h_t\big] =
+<span class="math display">\[\mathbb{E}\big[\nabla_\theta \log \pi_\theta(a_t \mid
+s_t) \mid h_t\big] =
 \sum_a \pi_\theta(a \mid s_t)\, \nabla_\theta \log \pi_\theta(a \mid
 s_t) = \sum_a \nabla_\theta \pi_\theta(a \mid s_t) = \nabla_\theta
 \sum_a \pi_\theta(a \mid s_t) = \nabla_\theta 1 = 0,\]</span> et pour
