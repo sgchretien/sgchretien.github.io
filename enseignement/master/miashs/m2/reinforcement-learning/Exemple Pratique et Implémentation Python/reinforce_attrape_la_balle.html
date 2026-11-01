@@ -655,8 +655,10 @@ s_t) = \sum_a \nabla_\theta \pi_\theta(a \mid s_t) = \nabla_\theta
 \sum_a \pi_\theta(a \mid s_t) = \nabla_\theta 1 = 0,\]</span> et pour
 toute variable <span class="math inline">\(X\)</span> fonction de <span
 class="math inline">\(h_t\)</span> seulement, <span
-class="math inline">\(\mathbb{E}[X\, \psi_t] = \mathbb{E}\big[X\,
-\mathbb{E}[\psi_t \mid h_t]\big] = 0\)</span>.</p>
+class="math inline">\(\mathbb{E}[X\, \nabla_\theta \log \pi_\theta(a_t \mid
+s_t)] = \mathbb{E}\big[X\,
+\mathbb{E}[\nabla_\theta \log \pi_\theta(a_t \mid
+s_t) \mid h_t]\big] = 0\)</span>.</p>
 <p><em>Application.</em> Coupons le retour au pas <span
 class="math inline">\(t\)</span> : <span class="math display">\[G_0 =
 \underbrace{\sum_{k=1}^{t} \gamma^{k-1} r_k}_{A_t \;:\;
@@ -665,9 +667,12 @@ class="math inline">\(r_k\)</span> ne dépend que de <span
 class="math inline">\((s_{k-1}, a_{k-1}, s_k)\)</span>, la partie passée
 <span class="math inline">\(A_t\)</span> est une fonction de <span
 class="math inline">\(h_t\)</span>, donc <span
-class="math inline">\(\mathbb{E}[A_t\, \psi_t] = 0\)</span> par le
-lemme. Il reste <span class="math inline">\(\mathbb{E}[G_0\, \psi_t] =
-\gamma^t\, \mathbb{E}[G_t\, \psi_t]\)</span> pour chaque <span
+class="math inline">\(\mathbb{E}[A_t\, \nabla_\theta \log \pi_\theta(a_t \mid
+s_t)] = 0\)</span> par le
+lemme. Il reste <span class="math inline">\(\mathbb{E}[G_0\, \nabla_\theta \log \pi_\theta(a_t \mid
+s_t)] =
+\gamma^t\, \mathbb{E}[G_t\, \nabla_\theta \log \pi_\theta(a_t \mid
+s_t)]\)</span> pour chaque <span
 class="math inline">\(t\)</span>, et finalement <span
 class="math display">\[\nabla_\theta J(\theta) =
 \mathbb{E}\Big[\sum_{t=0}^{T-1} \gamma^t\, G_t \, \nabla_\theta \log
@@ -676,7 +681,8 @@ class="math inline">\(A_t\)</span> ne change pas l’espérance mais
 supprime un terme qui n’apporte que du bruit : c’est déjà une réduction
 de variance. Ce n’est pas une factorisation de <span
 class="math inline">\(G_0\)</span> : chaque terme <span
-class="math inline">\(\psi_t\)</span> garde sa propre part du
+class="math inline">\(\nabla_\theta \log \pi_\theta(a_t \mid
+s_t)\)</span> garde sa propre part du
 retour.</p>
 <p><strong>Estimation Monte-Carlo.</strong> On joue une partie avec la
 politique courante : la somme entre crochets, calculée sur cette partie,
@@ -687,7 +693,8 @@ de montée de gradient et on recommence.</p>
 <span class="math inline">\(b\)</span> de l’état : <span
 class="math inline">\(b(s_t)\)</span> est une fonction de <span
 class="math inline">\(h_t\)</span>, donc <span
-class="math inline">\(\mathbb{E}\big[b(s_t)\, \psi_t\big] = 0\)</span>.
+class="math inline">\(\mathbb{E}\big[b(s_t)\, \nabla_\theta \log \pi_\theta(a_t \mid
+s_t)\big] = 0\)</span>.
 Remplacer <span class="math inline">\(G_t\)</span> par <span
 class="math inline">\(G_t - b(s_t)\)</span> ne change donc pas
 l’espérance, mais peut réduire fortement la variance (section 7). Le
